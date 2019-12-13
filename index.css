@@ -30,6 +30,12 @@ body {
     transform: rotate(-60deg) skewY(30deg);
     background: #fd005f;
     overflow: hidden;
+    visibility: hidden;
+}
+
+/* children visible */
+#grid li * {
+    visibility: visible;
 }
 
 /* hexagon li child */
