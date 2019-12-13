@@ -3,6 +3,8 @@ const vowels = ['a', 'e', 'i', 'o', 'u'];
 
 //start button
 const start = document.querySelector('button');
+//hexes
+const hexes = document.querySelectorAll('.hexagon');
 
 //game start chooses letters from vowels and consonants and renders on hex grid
 start.addEventListener('click', () => {
@@ -39,5 +41,19 @@ start.addEventListener('click', () => {
       pickConsonants();
     }
   }
-  debugger
-} )
+
+  let center = gameLetters.shift();
+  
+  hexes.forEach(hex => {
+    
+    console.log(gameLetters, hex)
+
+    if (hex.id === 'hidden1' || hex.id === 'hidden2') {
+      null;
+    } else if (hex.id === 'center') {
+      hex.innerText = center;
+    } else {
+      hex.innerText = gameLetters.pop();
+    }
+  })
+})

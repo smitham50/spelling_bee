@@ -74,6 +74,8 @@ body {
     -ms-transform: skewY(-30deg) rotate(60deg);
     transform: skewY(-30deg) rotate(60deg);
     overflow: hidden;
+    color: #282828;
+    text-align: center;
 }
 
 /* hide first of row 1 and 3 */
