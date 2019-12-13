@@ -35,7 +35,7 @@ body {
 
 /* children visible */
 #grid li * {
-    visibility: visible;
+  visibility: visible;
 }
 
 /* add left and right margin to middle hexes */
@@ -54,6 +54,11 @@ body {
     transform: translateX(50%) rotate(-60deg) skewY(30deg);
 }
 
+/* even out staggered row margins */
+#grid li:nth-child(6n+4) { 
+    margin-left: 0.5%;
+}
+
 /* hexagon li child */
 #grid li .hexagon {
     position: absolute;
@@ -68,5 +73,14 @@ body {
     -ms-transform: skewY(-30deg) rotate(60deg);
     transform: skewY(-30deg) rotate(60deg);
     overflow: hidden;
+}
+
+/* hide first of row 1 and 3 */
+#grid li #hidden1 {
+  visibility: hidden;
+}
+
+#grid li #hidden2 {
+  visibility: hidden;
 }
 
