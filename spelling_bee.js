@@ -8,52 +8,85 @@ const hexes = document.querySelectorAll('.hexagon');
 
 //game start chooses letters from vowels and consonants and renders on hex grid
 start.addEventListener('click', () => {
-  let gameLetters = [];
-  
-  //call pickVowels function twice to add two unique vowels to gameLetters array
-  for (let i = 0; i < 2; i++) {
-    pickVowels();
-  }
+  let gameLettersCopy = [];
+  let validWords;
 
-  //pickVowels function recurses until it finds a vowel that isn't already in gameLetters array
-  function pickVowels() {
-    let idx = Math.floor(Math.random() * 5)
+  function pickLetters() {
+    let gameLetters = [];
 
-    if (!gameLetters.includes(vowels[idx])) {
-      gameLetters.push(vowels[idx]);
-    } else {
+    //call pickVowels function twice to add two unique vowels to gameLetters array
+    for (let i = 0; i < 2; i++) {
       pickVowels();
     }
-  }
 
-  //call pickConsonants five times to add five unique consonants to gameLetters array
-  for (let i = 0; i < 5; i++) {
-    pickConsonants();
-  }
+    //pickVowels function recurses until it finds a vowel that isn't already in gameLetters array
+    function pickVowels() {
+      let idx = Math.floor(Math.random() * 5)
 
-  //pickConsonants recurses until it finds a consonant that isn't already in gameLetters array
-  function pickConsonants() {
-    let idx = Math.floor(Math.random() * 20);
+      if (!gameLetters.includes(vowels[idx])) {
+        gameLetters.push(vowels[idx]);
+        gameLettersCopy = [...gameLetters]
+      } else {
+        pickVowels();
+      }
+    }
 
-    if (!gameLetters.includes(consonants[idx])) {
-      gameLetters.push(consonants[idx]);
-    } else {
+    //call pickConsonants five times to add five unique consonants to gameLetters array
+    for (let i = 0; i < 5; i++) {
       pickConsonants();
     }
-  }
 
-  let center = gameLetters.shift();
-  
-  hexes.forEach(hex => {
-    
-    console.log(gameLetters, hex)
+    //pickConsonants recurses until it finds a consonant that isn't already in gameLetters array
+    function pickConsonants() {
+      let idx = Math.floor(Math.random() * 20);
 
-    if (hex.id === 'hidden1' || hex.id === 'hidden2') {
-      null;
-    } else if (hex.id === 'center') {
-      hex.innerText = center;
-    } else {
-      hex.innerText = gameLetters.pop();
+      if (!gameLetters.includes(consonants[idx])) {
+        gameLetters.push(consonants[idx]);
+        gameLettersCopy = [...gameLetters]
+      } else {
+        pickConsonants();
+      }
     }
-  })
+
+    let center = gameLetters.shift();
+
+    hexes.forEach(hex => {
+
+      console.log(gameLetters, hex)
+
+      if (hex.id === 'hidden1' || hex.id === 'hidden2') {
+        null;
+      } else if (hex.id === 'center') {
+        hex.innerText = center;
+      } else {
+        hex.innerText = gameLetters.pop();
+      }
+    })
+  }
+  
+
+  //get all words
+  Promise.all([
+    fetch('https://raw.githubusercontent.com/jmlewis/valett/master/scrabble/sowpods.txt').then(x => x.text())
+  ]).then(([sampleResp]) => {
+    pickLetters();
+    getWords(sampleResp);
+  });
+
+  //filter invalid words
+
+  function getWords(words) {
+    words = words.split('\n')
+    validWords = words.filter(word => {
+      return !!!word.split('').find(char => {
+        if (/^[a-z0-9]+$/i.test(char)) {
+          return !gameLettersCopy.includes(char.toLowerCase());
+        };
+      })
+    })
+    console.log(validWords);
+  };
+  
 })
+
+
