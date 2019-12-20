@@ -51,9 +51,6 @@ start.addEventListener('click', () => {
     let center = gameLetters.shift();
 
     hexes.forEach(hex => {
-
-      console.log(gameLetters, hex)
-
       if (hex.id === 'hidden1' || hex.id === 'hidden2') {
         null;
       } else if (hex.id === 'center') {
@@ -74,10 +71,8 @@ start.addEventListener('click', () => {
   });
 
   //filter invalid words
-
   function getWords(words) {
-    words = words.split('\n')
-    words = words.filter(word => word.length >= 5);
+    words = words.split('\n').filter(word => word.length >= 5);
     validWords = words.filter(word => {
       return !!!word.split('').find(char => {
         if (/^[a-z0-9]+$/i.test(char)) {
@@ -88,6 +83,17 @@ start.addEventListener('click', () => {
     console.log(validWords);
   };
   
+})
+
+hexes.forEach(hex => {
+  hex.addEventListener('click', (e) => {
+    e.target.className = 'clicked';
+    setTimeout(changeBackground, 100);
+
+    function changeBackground() {
+      e.target.className = 'hexagon';
+    }
+  })
 })
 
 
