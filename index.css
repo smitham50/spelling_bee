@@ -1,6 +1,7 @@
 body {
     background: #282828;
-    font-family: 'Yantramanav', sans-serif;
+    font-family: 'Baloo Bhai', cursive;
+    font-size: 40px;
 }
 
 /* grid */
@@ -93,6 +94,18 @@ body {
     overflow: hidden;
     color: #282828;
     text-align: center;
+}
+
+#grid li .hexagon div {
+  position: absolute;
+  top: 37%;
+  left: 42%;
+}
+
+#grid li .clicked div {
+  position: absolute;
+  top: 37%;
+  left: 42%;
 }
 
 /* hide first of row 1 and 3 */

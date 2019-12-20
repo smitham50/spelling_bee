@@ -54,9 +54,13 @@ start.addEventListener('click', () => {
       if (hex.id === 'hidden1' || hex.id === 'hidden2') {
         null;
       } else if (hex.id === 'center') {
-        hex.innerText = center;
+        hex.innerHTML = `
+        <div>${center}</div>
+        `;
       } else {
-        hex.innerText = gameLetters.pop();
+        hex.innerHTML = `
+        <div>${gameLetters.pop()}</div>
+        `;
       }
     })
   }
@@ -85,6 +89,7 @@ start.addEventListener('click', () => {
   
 })
 
+//add click event listener to hexes
 hexes.forEach(hex => {
   hex.addEventListener('click', (e) => {
     e.target.className = 'clicked';
