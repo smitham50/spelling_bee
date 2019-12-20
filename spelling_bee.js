@@ -77,6 +77,7 @@ start.addEventListener('click', () => {
 
   function getWords(words) {
     words = words.split('\n')
+    words = words.filter(word => word.length >= 5);
     validWords = words.filter(word => {
       return !!!word.split('').find(char => {
         if (/^[a-z0-9]+$/i.test(char)) {
