@@ -55,9 +55,9 @@ start.addEventListener('click', () => {
       if (hex.id === 'hidden1' || hex.id === 'hidden2') {
         null;
       } else if (hex.id === 'center') {
-        hex.innerHTML = `<div>${center}</div>`;
+        hex.innerText = center;
       } else {
-        hex.innerHTML = `<div>${gameLetters.pop()}</div>`;
+        hex.innerText = gameLetters.pop();
       }
     })
   }

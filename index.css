@@ -2,6 +2,19 @@ body {
     background: #282828;
     font-family: 'Baloo Bhai', cursive;
     font-size: 40px;
+    display: flex;
+}
+
+#left {
+  width: 20%;
+}
+
+#center {
+  width: 60%;
+}
+
+#right {
+  width: 20%;
 }
 
 /* grid */
@@ -77,6 +90,7 @@ body {
     overflow: hidden;
     color: #282828;
     text-align: center;
+    line-height: 4.5em;
 }
 
 #grid li .clicked {
@@ -94,18 +108,7 @@ body {
     overflow: hidden;
     color: #282828;
     text-align: center;
-}
-
-#grid li .hexagon div {
-  position: absolute;
-  top: 38%;
-  left: 42%;
-}
-
-#grid li .clicked div {
-  position: absolute;
-  top: 37%;
-  left: 43%;
+    line-height: 4.5em;
 }
 
 /* hide first of row 1 and 3 */
