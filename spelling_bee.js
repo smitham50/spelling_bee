@@ -10,6 +10,7 @@ const hexes = document.querySelectorAll('.hexagon');
 start.addEventListener('click', () => {
   let gameLettersCopy = [];
   let validWords;
+  let center;
 
   function pickLetters() {
     let gameLetters = [];
@@ -48,19 +49,15 @@ start.addEventListener('click', () => {
       }
     }
 
-    let center = gameLetters.shift();
+    center = gameLetters.shift();
 
     hexes.forEach(hex => {
       if (hex.id === 'hidden1' || hex.id === 'hidden2') {
         null;
       } else if (hex.id === 'center') {
-        hex.innerHTML = `
-        <div>${center}</div>
-        `;
+        hex.innerHTML = `<div>${center}</div>`;
       } else {
-        hex.innerHTML = `
-        <div>${gameLetters.pop()}</div>
-        `;
+        hex.innerHTML = `<div>${gameLetters.pop()}</div>`;
       }
     })
   }
@@ -78,8 +75,8 @@ start.addEventListener('click', () => {
   function getWords(words) {
     words = words.split('\n').filter(word => word.length >= 5);
     validWords = words.filter(word => {
-      return !!!word.split('').find(char => {
-        if (/^[a-z0-9]+$/i.test(char)) {
+      return word.includes(center.toUpperCase()) && !!!word.split('').find(char => {
+        if (/^[a-z]+$/i.test(char)) {
           return !gameLettersCopy.includes(char.toLowerCase());
         };
       })
@@ -87,7 +84,7 @@ start.addEventListener('click', () => {
     console.log(validWords);
   };
   
-})
+}) //end of start event listener
 
 //add click event listener to hexes
 hexes.forEach(hex => {
@@ -99,6 +96,6 @@ hexes.forEach(hex => {
       e.target.className = 'hexagon';
     }
   })
-})
+}) //end of hex click event listener
 
 

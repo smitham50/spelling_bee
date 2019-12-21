@@ -98,14 +98,14 @@ body {
 
 #grid li .hexagon div {
   position: absolute;
-  top: 37%;
+  top: 38%;
   left: 42%;
 }
 
 #grid li .clicked div {
   position: absolute;
   top: 37%;
-  left: 42%;
+  left: 43%;
 }
 
 /* hide first of row 1 and 3 */
