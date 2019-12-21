@@ -5,14 +5,92 @@ body {
     display: flex;
 }
 
+/* start button */
+#start {
+  background-color: #fdbf00;
+  color: #282828;
+  text-align: center;
+  vertical-align: middle;
+  border-radius: 5px;
+}
+
+#start-click {
+  background-color: #ffd34c;
+  color: #282828;
+  text-align: center;
+  vertical-align: middle;
+  border-radius: 5px;
+}
+
+/* left side of page */
 #left {
   width: 20%;
+  height: 500px;
+  column-fill: auto;
+  -webkit-column-fill: auto;
+  -moz-column-fill: auto;
+  column-width: 20%;
+  -webkit-column-width: 20%;
+  -moz-column-width: 20%;
 }
 
+#found-words {
+  color: #fdbf00;
+}
+
+/* center div with hex grid */
 #center {
   width: 60%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
+/* text entry div */
+#text-entry {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* text-box */
+#text-box {
+  width: 75%;
+  height: 70px;
+  margin-top: 10%;
+  margin-left: 18%;
+  background-color: #fdbf00;
+  border-radius: 5px;
+  color: #282828;
+  vertical-align: middle;
+  text-align: center;
+}
+
+#submit {
+  width: 25%;
+  height: 70px;
+  margin-top: 10%;
+  margin-left: 20px;
+  background-color: #fdbf00;
+  border-radius: 5px;
+  color: #282828;
+  vertical-align: middle;
+  text-align: center;
+}
+
+#submit-click {
+  width: 25%;
+  height: 70px;
+  margin-top: 10%;
+  margin-left: 20px;
+  background-color: #ffd34c;
+  border-radius: 5px;
+  color: #282828;
+  vertical-align: middle;
+  text-align: center;
+}
+
+
+/* right side of page */
 #right {
   width: 20%;
 }
@@ -21,6 +99,7 @@ body {
 #grid {
     position: relative;
     width: 60%;
+    height: 75%;
     margin: 0 auto;
     padding: 0;
 }
@@ -119,4 +198,3 @@ body {
 #grid li #hidden2 {
   visibility: hidden;
 }
-

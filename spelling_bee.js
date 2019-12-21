@@ -1,16 +1,28 @@
 const consonants = ['b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'v', 'w', 'x', 'y', 'z'];
 const vowels = ['a', 'e', 'i', 'o', 'u'];
+const textBox = document.querySelector('#text-box');
+let validWords;
 
 //start button
-const start = document.querySelector('button');
+const start = document.querySelector('#start');
 //hexes
 const hexes = document.querySelectorAll('.hexagon');
 
 //game start chooses letters from vowels and consonants and renders on hex grid
-start.addEventListener('click', () => {
+start.addEventListener('click', (e) => {
   let gameLettersCopy = [];
-  let validWords;
   let center;
+
+  //click visualizer
+  e.target.id = 'start-click';
+  setTimeout(changeBackground, 100);
+
+  function changeBackground() {
+    e.target.id = 'start';
+  }
+  
+  //clear text box
+  textBox.innerText = "";
 
   function pickLetters() {
     let gameLetters = [];
@@ -73,12 +85,10 @@ start.addEventListener('click', () => {
 
   //filter invalid words
   function getWords(words) {
-    words = words.split('\n').filter(word => word.length >= 5);
+    words = words.split('\n').map(word => word.trim());
     validWords = words.filter(word => {
-      return word.includes(center.toUpperCase()) && !!!word.split('').find(char => {
-        if (/^[a-z]+$/i.test(char)) {
+      return word.length >= 4 && word.includes(center.toUpperCase()) && !!!word.split('').find(char => {
           return !gameLettersCopy.includes(char.toLowerCase());
-        };
       })
     })
     console.log(validWords);
@@ -86,9 +96,10 @@ start.addEventListener('click', () => {
   
 }) //end of start event listener
 
-//add click event listener to hexes
+//add click event listener to hexes, clicked hexes add text to text box
 hexes.forEach(hex => {
   hex.addEventListener('click', (e) => {
+    textBox.innerText += `${e.target.innerText}`
     e.target.className = 'clicked';
     setTimeout(changeBackground, 100);
 
@@ -97,5 +108,27 @@ hexes.forEach(hex => {
     }
   })
 }) //end of hex click event listener
+
+//append found words list on successful word entry
+const foundList = document.querySelector('#found-words');
+const submit = document.querySelector('#submit');
+
+submit.addEventListener('click', (e) => {
+  if (validWords.includes(textBox.innerText.toUpperCase())) {
+    foundList.innerHTML += `<li>${textBox.innerText}</li>`;
+  }
+  e.target.id = 'submit-click';
+  setTimeout(changeBackground, 100);
+
+  function changeBackground() {
+    e.target.id = 'submit';
+  }
+
+  textBox.innerText = "";
+})
+  
+
+
+
 
 
