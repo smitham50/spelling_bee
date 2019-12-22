@@ -2,10 +2,12 @@ const consonants = ['b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 
 const vowels = ['a', 'e', 'i', 'o', 'u'];
 const textBox = document.querySelector('#text-box');
 const foundList = document.querySelector('#found-words');
+const scoreBoard = document.querySelector('#score');
 const submit = document.querySelector('#submit');
 let validWords;
 let foundWords = [];
 let possiblePoints = 0;
+let foundPoints = 0;
 
 //start button
 const start = document.querySelector('#start');
@@ -21,7 +23,6 @@ start.addEventListener('click', (e) => {
   //click visualizer
   e.target.id = 'start-click';
   setTimeout(changeBackground, 100);
-
   function changeBackground() {
     e.target.id = 'start';
   }
@@ -34,6 +35,10 @@ start.addEventListener('click', (e) => {
   foundWords = [];
   //reset possible points
   possiblePoints = 0;
+  //reset found points
+  foundPoints = 0;
+  //reset scoreBoard
+  scoreBoard.innerText = `${foundPoints}pts`;
 
   //pick letter function is called after response from fetching words from github text file
   function pickLetters() {
@@ -45,7 +50,6 @@ start.addEventListener('click', (e) => {
     //pickVowels function recurses until it finds a vowel that isn't already in gameLetters array
     function pickVowels() {
       let idx = Math.floor(Math.random() * 5)
-
       if (!gameLetters.includes(vowels[idx])) {
         gameLetters.push(vowels[idx]);
         gameLettersCopy = [...gameLetters]
@@ -60,7 +64,6 @@ start.addEventListener('click', (e) => {
     //pickConsonants recurses until it finds a consonant that isn't already in gameLetters array
     function pickConsonants() {
       let idx = Math.floor(Math.random() * 20);
-
       if (!gameLetters.includes(consonants[idx])) {
         gameLetters.push(consonants[idx]);
         gameLettersCopy = [...gameLetters]
@@ -69,8 +72,8 @@ start.addEventListener('click', (e) => {
       }
     }
 
-    center = gameLetters.shift();
     //print game letters in hexes
+    center = gameLetters.shift();
     hexes.forEach(hex => {
       if (hex.id === 'hidden1' || hex.id === 'hidden2') {
         null;
@@ -80,10 +83,10 @@ start.addEventListener('click', (e) => {
         hex.innerText = gameLetters.pop();
       }
     })
-  }
+  } //end start game event listener
   
 
-  //get all words from github text file
+  //get all words from github text file of SOWPODS word list
   Promise.all([
     fetch('https://raw.githubusercontent.com/jmlewis/valett/master/scrabble/sowpods.txt').then(x => x.text())
   ]).then(([sampleResp]) => {
@@ -102,7 +105,6 @@ start.addEventListener('click', (e) => {
     })
     console.log(validWords);
   };
-  
 }) //end of start event listener
 
 //add click event listener to hexes, clicked hexes add text to text box
@@ -120,30 +122,34 @@ hexes.forEach(hex => {
 
 //append found words list on successful word entry
 submit.addEventListener('click', (e) => {
+  let enteredWord = textBox.innerText;
   //if word is valid and hasn't already been found...
-  if (!foundWords.includes(textBox.innerText) && validWords.includes(textBox.innerText.toUpperCase())) {
-    foundList.innerHTML += `<li>${textBox.innerText}</li>`;
-    foundWords.push(textBox.innerText);
+  if (!foundWords.includes(enteredWord) && validWords.includes(enteredWord.toUpperCase())) {
+    foundList.innerHTML += `<li>${enteredWord}</li>`;
+    foundWords.push(enteredWord);
+    addPoints(enteredWord);
     clearText();
   } else {
     //if word has already been entered...
-    if (foundWords.includes(textBox.innerText)) {
-      textBox.innerText = "Already found!";
+    if (foundWords.includes(enteredWord)) {
+      enteredWord = "Already found!";
       setTimeout(clearText, 450);
     } 
     //if word isn't valid...
     else {
-      textBox.innerText = "Invalid word!";
+      enteredWord = "Invalid word!";
       setTimeout(clearText, 450);
     }
   }
+
+  //change submit button background on click
   e.target.id = 'submit-click';
   setTimeout(changeBackground, 100);
-
   function changeBackground() {
     e.target.id = 'submit';
   }
 
+  //clear text box on submit
   function clearText() {
     textBox.innerText = ""
   }
@@ -164,6 +170,21 @@ function calculatePoints() {
     if (word.length >= 8) possiblePoints += 5;
   })
   console.log("POSSIBLE POINTS", possiblePoints)
+}
+
+//add points to player score on word entry
+function addPoints(word) {
+  //1 point for 4 letters
+  if (word.length === 4) foundPoints += 1;
+  //2 points for 5 letters
+  if (word.length === 5) foundPoints += 2;
+  //3 points for 6 letters
+  if (word.length === 6) foundPoints += 3;
+  //4 points for 7 letters
+  if (word.length === 7) foundPoints += 4;
+  //5 points for 8 or more letters
+  if (word.length >= 8) foundPoints += 5;
+  scoreBoard.innerText = `${foundPoints}pts`;
 }
   
 

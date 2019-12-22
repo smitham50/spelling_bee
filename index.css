@@ -106,6 +106,15 @@ ul {
   width: 20%;
 }
 
+#score-header {
+  color: #fdbf00;
+}
+
+#score {
+  color: #fdbf00;
+  font-size: 30px;
+}
+
 /* grid */
 #grid {
     position: relative;
