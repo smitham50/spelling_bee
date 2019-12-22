@@ -132,12 +132,12 @@ submit.addEventListener('click', (e) => {
   } else {
     //if word has already been entered...
     if (foundWords.includes(enteredWord)) {
-      enteredWord = "Already found!";
+      textBox.innerText = "Already found!";
       setTimeout(clearText, 450);
     } 
     //if word isn't valid...
     else {
-      enteredWord = "Invalid word!";
+      textBox.innerText = "Invalid word!";
       setTimeout(clearText, 450);
     }
   }
@@ -151,7 +151,7 @@ submit.addEventListener('click', (e) => {
 
   //clear text box on submit
   function clearText() {
-    textBox.innerText = ""
+    textBox.innerText = "";
   }
 }) //end word submit event listener
 
