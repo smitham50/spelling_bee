@@ -4,6 +4,7 @@ const textBox = document.querySelector('#text-box');
 const foundList = document.querySelector('#found-words');
 const submit = document.querySelector('#submit');
 let validWords;
+let foundWords = [];
 
 //start button
 const start = document.querySelector('#start');
@@ -25,18 +26,17 @@ start.addEventListener('click', (e) => {
   
   //clear text box on start
   textBox.innerText = "";
-
   //clear found list on start
   foundList.innerHTML = "";
+  //clear found words array on start
+  foundWords = [];
 
   function pickLetters() {
     let gameLetters = [];
-
     //call pickVowels function twice to add two unique vowels to gameLetters array
     for (let i = 0; i < 2; i++) {
       pickVowels();
     }
-
     //pickVowels function recurses until it finds a vowel that isn't already in gameLetters array
     function pickVowels() {
       let idx = Math.floor(Math.random() * 5)
@@ -48,12 +48,10 @@ start.addEventListener('click', (e) => {
         pickVowels();
       }
     }
-
     //call pickConsonants five times to add five unique consonants to gameLetters array
     for (let i = 0; i < 5; i++) {
       pickConsonants();
     }
-
     //pickConsonants recurses until it finds a consonant that isn't already in gameLetters array
     function pickConsonants() {
       let idx = Math.floor(Math.random() * 20);
@@ -67,7 +65,7 @@ start.addEventListener('click', (e) => {
     }
 
     center = gameLetters.shift();
-
+    //print game letters in hexes
     hexes.forEach(hex => {
       if (hex.id === 'hidden1' || hex.id === 'hidden2') {
         null;
@@ -116,12 +114,22 @@ hexes.forEach(hex => {
 
 //append found words list on successful word entry
 submit.addEventListener('click', (e) => {
-  if (validWords.includes(textBox.innerText.toUpperCase())) {
+  //if word is valid and hasn't already been found...
+  if (!foundWords.includes(textBox.innerText) && validWords.includes(textBox.innerText.toUpperCase())) {
     foundList.innerHTML += `<li>${textBox.innerText}</li>`;
+    foundWords.push(textBox.innerText);
     clearText();
   } else {
-    textBox.innerText = "Invalid word!";
-    setTimeout(clearText, 400);
+    //if word has already been entered...
+    if (foundWords.includes(textBox.innerText)) {
+      textBox.innerText = "Already found!";
+      setTimeout(clearText, 450);
+    } 
+    //if word isn't valid...
+    else {
+      textBox.innerText = "Invalid word!";
+      setTimeout(clearText, 450);
+    }
   }
   e.target.id = 'submit-click';
   setTimeout(changeBackground, 100);
