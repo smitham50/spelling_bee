@@ -5,6 +5,7 @@ const foundList = document.querySelector('#found-words');
 const submit = document.querySelector('#submit');
 let validWords;
 let foundWords = [];
+let possiblePoints = 0;
 
 //start button
 const start = document.querySelector('#start');
@@ -31,6 +32,8 @@ start.addEventListener('click', (e) => {
   foundList.innerHTML = "";
   //clear found words array on start
   foundWords = [];
+  //reset possible points
+  possiblePoints = 0;
 
   //pick letter function is called after response from fetching words from github text file
   function pickLetters() {
@@ -86,6 +89,7 @@ start.addEventListener('click', (e) => {
   ]).then(([sampleResp]) => {
     pickLetters();
     getWords(sampleResp);
+    calculatePoints();
   });
 
   //filter invalid words
@@ -144,6 +148,23 @@ submit.addEventListener('click', (e) => {
     textBox.innerText = ""
   }
 }) //end word submit event listener
+
+//calculate possible points for round
+function calculatePoints() {
+  validWords.forEach(word => {
+    //1 point for 4 letters
+    if (word.length === 4) possiblePoints += 1;
+    //2 points for 5 letters
+    if (word.length === 5) possiblePoints += 2;
+    //3 points for 6 letters
+    if (word.length === 6) possiblePoints += 3;
+    //4 points for 7 letters
+    if (word.length === 7) possiblePoints += 4;
+    //5 points for 8 or more letters
+    if (word.length >= 8) possiblePoints += 5;
+  })
+  console.log("POSSIBLE POINTS", possiblePoints)
+}
   
 
 
