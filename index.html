@@ -6,39 +6,53 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <script src="./spelling_bee.js" defer></script>
   <link rel="stylesheet" href="./index.css">
-  <link href="https://fonts.googleapis.com/css?family=Yantramanav&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Baloo+Bhai&display=swap" rel="stylesheet">
   <title>Spelling Bee</title>
 </head>
 <body>
-  <button>Start Game</button>
-  <ul id="grid" class="clear">
-    <li>
-      <div class="hexagon" id="hidden1"></div>
-    </li>
-    <li>
-      <div class="hexagon"></div>
-    </li>
-    <li>
-      <div class="hexagon"></div>
-    </li>
-    <li>
-      <div class="hexagon"></div>
-    </li>
-    <li>
-      <div class="hexagon" id="center"></div>
-    </li>
-    <li>
-      <div class="hexagon"></div>
-    </li>
-    <li>
-      <div class="hexagon" id="hidden2"></div>
-    </li>
-    <li>
-      <div class="hexagon"></div>
-    </li>
-    <li>
-      <div class="hexagon"></div>
-    </li>
-  </ul>
+  <div id="left">
+    <div id="start">Start Game</div>
+    <div id="list-div">
+      <ul id="found-words">
+
+      </ul>
+    </div>
+  </div>
+  <div id="center">
+    <ul id="grid" class="clear">
+      <li>
+        <div class="hexagon" id="hidden1"></div>
+      </li>
+      <li>
+        <div class="hexagon"></div>
+      </li>
+      <li>
+        <div class="hexagon"></div>
+      </li>
+      <li>
+        <div class="hexagon"></div>
+      </li>
+      <li>
+        <div class="hexagon" id="center"></div>
+      </li>
+      <li>
+        <div class="hexagon"></div>
+      </li>
+      <li>
+        <div class="hexagon" id="hidden2"></div>
+      </li>
+      <li>
+        <div class="hexagon"></div>
+      </li>
+      <li>
+        <div class="hexagon"></div>
+      </li>
+    </ul>
+    <div id="text-entry">
+      <div id="text-box"></div>
+      <div id="submit">Submit</div>
+    </div>
+  </div>
+  <div id="right"></div>
 </body>
 </html>
