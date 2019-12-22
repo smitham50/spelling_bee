@@ -1,6 +1,8 @@
 const consonants = ['b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'v', 'w', 'x', 'y', 'z'];
 const vowels = ['a', 'e', 'i', 'o', 'u'];
 const textBox = document.querySelector('#text-box');
+const foundList = document.querySelector('#found-words');
+const submit = document.querySelector('#submit');
 let validWords;
 
 //start button
@@ -21,8 +23,11 @@ start.addEventListener('click', (e) => {
     e.target.id = 'start';
   }
   
-  //clear text box
+  //clear text box on start
   textBox.innerText = "";
+
+  //clear found list on start
+  foundList.innerHTML = "";
 
   function pickLetters() {
     let gameLetters = [];
@@ -75,7 +80,7 @@ start.addEventListener('click', (e) => {
   }
   
 
-  //get all words
+  //get all words from github text file
   Promise.all([
     fetch('https://raw.githubusercontent.com/jmlewis/valett/master/scrabble/sowpods.txt').then(x => x.text())
   ]).then(([sampleResp]) => {
@@ -110,12 +115,13 @@ hexes.forEach(hex => {
 }) //end of hex click event listener
 
 //append found words list on successful word entry
-const foundList = document.querySelector('#found-words');
-const submit = document.querySelector('#submit');
-
 submit.addEventListener('click', (e) => {
   if (validWords.includes(textBox.innerText.toUpperCase())) {
     foundList.innerHTML += `<li>${textBox.innerText}</li>`;
+    clearText();
+  } else {
+    textBox.innerText = "Invalid word!";
+    setTimeout(clearText, 400);
   }
   e.target.id = 'submit-click';
   setTimeout(changeBackground, 100);
@@ -124,7 +130,9 @@ submit.addEventListener('click', (e) => {
     e.target.id = 'submit';
   }
 
-  textBox.innerText = "";
+  function clearText() {
+    textBox.innerText = ""
+  }
 })
   
 

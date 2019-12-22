@@ -24,8 +24,14 @@ body {
 
 /* left side of page */
 #left {
+  /* display: flex;
+  flex-direction: column;
+  justify-content: space-around; */
+}
+
+#list-div {
   width: 20%;
-  height: 500px;
+  height: 300px;
   column-fill: auto;
   -webkit-column-fill: auto;
   -moz-column-fill: auto;
@@ -36,6 +42,11 @@ body {
 
 #found-words {
   color: #fdbf00;
+  font-size: 30px;
+}
+
+ul {
+  list-style: none;
 }
 
 /* center div with hex grid */
