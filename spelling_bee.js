@@ -13,6 +13,7 @@ const hexes = document.querySelectorAll('.hexagon');
 
 //game start chooses letters from vowels and consonants and renders on hex grid
 start.addEventListener('click', (e) => {
+  //preserve copy of game letters for reference
   let gameLettersCopy = [];
   let center;
 
@@ -31,6 +32,7 @@ start.addEventListener('click', (e) => {
   //clear found words array on start
   foundWords = [];
 
+  //pick letter function is called after response from fetching words from github text file
   function pickLetters() {
     let gameLetters = [];
     //call pickVowels function twice to add two unique vowels to gameLetters array
@@ -141,7 +143,7 @@ submit.addEventListener('click', (e) => {
   function clearText() {
     textBox.innerText = ""
   }
-})
+}) //end word submit event listener
   
 
 
