@@ -20,7 +20,7 @@ body {
 
 #found {
   color: #fdbf00;
-  font-size: 30px;
+  
 }
 
 #list-div {
@@ -60,7 +60,7 @@ ul {
 
 #delete {
   width: 20%;
-  height: 70px;
+  
   margin-top: 10%;
   margin-right: 20px;
   background-color: #fdbf00;
@@ -68,11 +68,12 @@ ul {
   color: #282828;
   vertical-align: middle;
   text-align: center;
+  font-size: 30px;
 }
 
 #delete-click {
   width: 20%;
-  height: 70px;
+  
   margin-top: 10%;
   margin-right: 20px;
   background-color: #ffd34c;
@@ -80,24 +81,26 @@ ul {
   color: #282828;
   vertical-align: middle;
   text-align: center;
+  font-size: 30px;
 }
 
 /* text-box */
 #text-box {
   position: static;
   width: 400px;
-  height: 70px;
+  
   margin-top: 10%;
   background-color: #fdbf00;
   border-radius: 20px;
   color: #282828;
   vertical-align: middle;
   text-align: center;
+  font-size: 30px;
 }
 
 #submit {
   width: 20%;
-  height: 70px;
+  
   margin-top: 10%;
   margin-left: 20px;
   background-color: #fdbf00;
@@ -105,11 +108,12 @@ ul {
   color: #282828;
   vertical-align: middle;
   text-align: center;
+  font-size: 30px;
 }
 
 #submit-click {
   width: 20%;
-  height: 70px;
+  
   margin-top: 10%;
   margin-left: 20px;
   background-color: #ffd34c;
@@ -117,6 +121,7 @@ ul {
   color: #282828;
   vertical-align: middle;
   text-align: center;
+  font-size: 30px;
 }
 
 /* start button */
@@ -132,6 +137,7 @@ ul {
   text-align: center;
   vertical-align: middle;
   border-radius: 20px;
+  font-size: 30px;
 }
 
 #start-click {
@@ -146,6 +152,7 @@ ul {
   text-align: center;
   vertical-align: middle;
   border-radius: 20px;
+  font-size: 30px;
 }
 
 
