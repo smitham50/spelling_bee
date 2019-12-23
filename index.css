@@ -1,8 +1,14 @@
 body {
-    background: #282828;
-    font-family: 'Baloo Bhai', cursive;
-    font-size: 40px;
-    display: flex;
+  background: #282828;
+  font-family: 'Baloo Bhai', cursive;
+  font-size: 40px;
+  display: flex;
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none;
 }
 
 /* start button */
@@ -23,11 +29,11 @@ body {
 }
 
 /* left side of page */
-#left {
-  /* display: flex;
+/* #left {
+  display: flex;
   flex-direction: column;
-  justify-content: space-around; */
-}
+  justify-content: space-around;
+} */
 
 #list-div {
   width: 20%;
@@ -63,12 +69,35 @@ ul {
   justify-content: space-between;
 }
 
-/* text-box */
-#text-box {
-  width: 75%;
+#delete {
+  width: 20%;
   height: 70px;
   margin-top: 10%;
-  margin-left: 18%;
+  margin-right: 20px;
+  background-color: #fdbf00;
+  border-radius: 5px;
+  color: #282828;
+  vertical-align: middle;
+  text-align: center;
+}
+
+#delete-click {
+  width: 20%;
+  height: 70px;
+  margin-top: 10%;
+  margin-right: 20px;
+  background-color: #ffd34c;
+  border-radius: 5px;
+  color: #282828;
+  vertical-align: middle;
+  text-align: center;
+}
+
+/* text-box */
+#text-box {
+  width: 60%;
+  height: 70px;
+  margin-top: 10%;
   background-color: #fdbf00;
   border-radius: 5px;
   color: #282828;
@@ -77,7 +106,7 @@ ul {
 }
 
 #submit {
-  width: 25%;
+  width: 20%;
   height: 70px;
   margin-top: 10%;
   margin-left: 20px;
@@ -117,34 +146,34 @@ ul {
 
 /* grid */
 #grid {
-    position: relative;
-    width: 60%;
-    height: 75%;
-    margin: 0 auto;
-    padding: 0;
+  position: relative;
+  width: 60%;
+  height: 75%;
+  margin: 0 auto;
+  padding: 0;
 }
 
 .clear:after {
-    content: "";
-    display: block;
-    clear: both;
+  content: "";
+  display: block;
+  clear: both;
 }
 
 /* parallelogram li */
 #grid li {
-    list-style-type: none;
-    position: relative;
-    float: left;
-    width: 27.85714285714286%;
-    padding: 0 0 32.16760145166612% 0;
-    -o-transform: rotate(-60deg) skewY(30deg);
-    -moz-transform: rotate(-60deg) skewY(30deg);
-    -webkit-transform: rotate(-60deg) skewY(30deg);
-    -ms-transform: rotate(-60deg) skewY(30deg);
-    transform: rotate(-60deg) skewY(30deg);
-    background: #fd005f;
-    overflow: hidden;
-    visibility: hidden;
+  list-style-type: none;
+  position: relative;
+  float: left;
+  width: 27.85714285714286%;
+  padding: 0 0 32.16760145166612% 0;
+  -o-transform: rotate(-60deg) skewY(30deg);
+  -moz-transform: rotate(-60deg) skewY(30deg);
+  -webkit-transform: rotate(-60deg) skewY(30deg);
+  -ms-transform: rotate(-60deg) skewY(30deg);
+  transform: rotate(-60deg) skewY(30deg);
+  background: #fd005f;
+  overflow: hidden;
+  visibility: hidden;
 }
 
 /* children visible */
@@ -159,67 +188,55 @@ ul {
 
 /* stagger every other row */
 #grid li:nth-child(6n+4), #grid li:nth-child(6n+5), #grid li:nth-child(6n+6) {
-    margin-top: -6.9285714285%;
-    margin-bottom: -6.9285714285%;
-    -o-transform: translateX(50%) rotate(-60deg) skewY(30deg);
-    -moz-transform: translateX(50%) rotate(-60deg) skewY(30deg);
-    -webkit-transform: translateX(50%) rotate(-60deg) skewY(30deg);
-    -ms-transform: translateX(50%) rotate(-60deg) skewY(30deg);
-    transform: translateX(50%) rotate(-60deg) skewY(30deg);
+  margin-top: -6.9285714285%;
+  margin-bottom: -6.9285714285%;
+  -o-transform: translateX(50%) rotate(-60deg) skewY(30deg);
+  -moz-transform: translateX(50%) rotate(-60deg) skewY(30deg);
+  -webkit-transform: translateX(50%) rotate(-60deg) skewY(30deg);
+  -ms-transform: translateX(50%) rotate(-60deg) skewY(30deg);
+  transform: translateX(50%) rotate(-60deg) skewY(30deg);
 }
 
 /* even out staggered row margins */
 #grid li:nth-child(6n+4) { 
-    margin-left: 0.5%;
+  margin-left: 0.5%;
 }
 
 /* hexagon li child */
 #grid li .hexagon {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: #fdbf00;
-    -o-transform: skewY(-30deg) rotate(60deg);
-    -moz-transform: skewY(-30deg) rotate(60deg);
-    -webkit-transform: skewY(-30deg) rotate(60deg);
-    -ms-transform: skewY(-30deg) rotate(60deg);
-    transform: skewY(-30deg) rotate(60deg);
-    overflow: hidden;
-    color: #282828;
-    text-align: center;
-    line-height: 4.5em;
-    -webkit-touch-callout: none; /* iOS Safari */
-    -webkit-user-select: none; /* Safari */
-    -khtml-user-select: none; /* Konqueror HTML */
-    -moz-user-select: none; /* Old versions of Firefox */
-    -ms-user-select: none; /* Internet Explorer/Edge */
-    user-select: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #fdbf00;
+  -o-transform: skewY(-30deg) rotate(60deg);
+  -moz-transform: skewY(-30deg) rotate(60deg);
+  -webkit-transform: skewY(-30deg) rotate(60deg);
+  -ms-transform: skewY(-30deg) rotate(60deg);
+  transform: skewY(-30deg) rotate(60deg);
+  overflow: hidden;
+  color: #282828;
+  text-align: center;
+  line-height: 4.5em;
 }
 
 #grid li .clicked {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: #ffd34c;
-    -o-transform: skewY(-30deg) rotate(60deg);
-    -moz-transform: skewY(-30deg) rotate(60deg);
-    -webkit-transform: skewY(-30deg) rotate(60deg);
-    -ms-transform: skewY(-30deg) rotate(60deg);
-    transform: skewY(-30deg) rotate(60deg);
-    overflow: hidden;
-    color: #282828;
-    text-align: center;
-    line-height: 4.5em;
-    -webkit-touch-callout: none; /* iOS Safari */
-    -webkit-user-select: none; /* Safari */
-    -khtml-user-select: none; /* Konqueror HTML */
-    -moz-user-select: none; /* Old versions of Firefox */
-    -ms-user-select: none; /* Internet Explorer/Edge */
-    user-select: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #ffd34c;
+  -o-transform: skewY(-30deg) rotate(60deg);
+  -moz-transform: skewY(-30deg) rotate(60deg);
+  -webkit-transform: skewY(-30deg) rotate(60deg);
+  -ms-transform: skewY(-30deg) rotate(60deg);
+  transform: skewY(-30deg) rotate(60deg);
+  overflow: hidden;
+  color: #282828;
+  text-align: center;
+  line-height: 4.5em;
 }
 
 /* hide first of row 1 and 3 */

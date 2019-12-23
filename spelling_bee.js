@@ -4,6 +4,7 @@ const textBox = document.querySelector('#text-box');
 const foundList = document.querySelector('#found-words');
 const scoreBoard = document.querySelector('#score');
 const submit = document.querySelector('#submit');
+const deleteButton = document.querySelector('#delete');
 let validWords;
 let foundWords = [];
 let possiblePoints = 0;
@@ -120,6 +121,17 @@ hexes.forEach(hex => {
   })
 }) //end of hex click event listener
 
+//delete button event listener
+deleteButton.addEventListener('click', (e) => {
+  textBox.innerText = textBox.innerText.slice(0, -1);
+  e.target.id = 'delete-click';
+  setTimeout(changeBackground, 100);
+  function changeBackground() {
+    e.target.id = 'delete';
+  }
+})
+
+
 //append found words list on successful word entry
 submit.addEventListener('click', (e) => {
   let enteredWord = textBox.innerText;
@@ -186,7 +198,7 @@ function addPoints(word) {
   //5 points for 8 or more letters
   if (word.length >= 8) pointValue = 5;
   foundPoints += pointValue;
-  textBox.innerText = pointValue === 1 ? `${pointValue} pt!` : `${pointValue} pts`
+  textBox.innerText = pointValue === 1 ? `${pointValue} pt!` : `${pointValue} pts!`
   scoreBoard.innerText = `${foundPoints} pts`;
 }
   
