@@ -11,29 +11,17 @@ body {
   user-select: none;
 }
 
-/* start button */
-#start {
-  background-color: #fdbf00;
-  color: #282828;
-  text-align: center;
-  vertical-align: middle;
-  border-radius: 5px;
-}
-
-#start-click {
-  background-color: #ffd34c;
-  color: #282828;
-  text-align: center;
-  vertical-align: middle;
-  border-radius: 5px;
-}
-
 /* left side of page */
 /* #left {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
 } */
+
+#found {
+  color: #fdbf00;
+  font-size: 30px;
+}
 
 #list-div {
   width: 20%;
@@ -66,7 +54,8 @@ ul {
 /* text entry div */
 #text-entry {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  padding-left: 50px;
 }
 
 #delete {
@@ -75,7 +64,7 @@ ul {
   margin-top: 10%;
   margin-right: 20px;
   background-color: #fdbf00;
-  border-radius: 5px;
+  border-radius: 20px;
   color: #282828;
   vertical-align: middle;
   text-align: center;
@@ -87,7 +76,7 @@ ul {
   margin-top: 10%;
   margin-right: 20px;
   background-color: #ffd34c;
-  border-radius: 5px;
+  border-radius: 20px;
   color: #282828;
   vertical-align: middle;
   text-align: center;
@@ -95,11 +84,12 @@ ul {
 
 /* text-box */
 #text-box {
-  width: 60%;
+  position: static;
+  width: 400px;
   height: 70px;
   margin-top: 10%;
   background-color: #fdbf00;
-  border-radius: 5px;
+  border-radius: 20px;
   color: #282828;
   vertical-align: middle;
   text-align: center;
@@ -111,22 +101,51 @@ ul {
   margin-top: 10%;
   margin-left: 20px;
   background-color: #fdbf00;
-  border-radius: 5px;
+  border-radius: 20px;
   color: #282828;
   vertical-align: middle;
   text-align: center;
 }
 
 #submit-click {
-  width: 25%;
+  width: 20%;
   height: 70px;
   margin-top: 10%;
   margin-left: 20px;
   background-color: #ffd34c;
-  border-radius: 5px;
+  border-radius: 20px;
   color: #282828;
   vertical-align: middle;
   text-align: center;
+}
+
+/* start button */
+#start {
+  background-color: #fdbf00;
+  width: 28%;
+  margin-left: 39%;
+  margin-right: 31%;
+  margin-top: 50px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #282828;
+  text-align: center;
+  vertical-align: middle;
+  border-radius: 20px;
+}
+
+#start-click {
+  background-color: #ffd34c;
+  width: 28%;
+  margin-left: 39%;
+  margin-right: 31%;
+  margin-top: 50px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #282828;
+  text-align: center;
+  vertical-align: middle;
+  border-radius: 20px;
 }
 
 
