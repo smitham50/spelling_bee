@@ -38,7 +38,7 @@ start.addEventListener('click', (e) => {
   //reset found points
   foundPoints = 0;
   //reset scoreBoard
-  scoreBoard.innerText = `${foundPoints}pts`;
+  scoreBoard.innerText = `${foundPoints} pts`;
 
   //pick letter function is called after response from fetching words from github text file
   function pickLetters() {
@@ -128,17 +128,17 @@ submit.addEventListener('click', (e) => {
     foundList.innerHTML += `<li>${enteredWord}</li>`;
     foundWords.push(enteredWord);
     addPoints(enteredWord);
-    clearText();
+    setTimeout(clearText, 550);
   } else {
     //if word has already been entered...
     if (foundWords.includes(enteredWord)) {
       textBox.innerText = "Already found!";
-      setTimeout(clearText, 450);
+      setTimeout(clearText, 550);
     } 
     //if word isn't valid...
     else {
       textBox.innerText = "Invalid word!";
-      setTimeout(clearText, 450);
+      setTimeout(clearText, 550);
     }
   }
 
@@ -174,17 +174,20 @@ function calculatePoints() {
 
 //add points to player score on word entry
 function addPoints(word) {
+  let pointValue;
   //1 point for 4 letters
-  if (word.length === 4) foundPoints += 1;
+  if (word.length === 4) pointValue = 1;
   //2 points for 5 letters
-  if (word.length === 5) foundPoints += 2;
+  if (word.length === 5) pointValue = 2;
   //3 points for 6 letters
-  if (word.length === 6) foundPoints += 3;
+  if (word.length === 6) pointValue = 3;
   //4 points for 7 letters
-  if (word.length === 7) foundPoints += 4;
+  if (word.length === 7) pointValue = 4;
   //5 points for 8 or more letters
-  if (word.length >= 8) foundPoints += 5;
-  scoreBoard.innerText = `${foundPoints}pts`;
+  if (word.length >= 8) pointValue = 5;
+  foundPoints += pointValue;
+  textBox.innerText = pointValue === 1 ? `${pointValue} pt!` : `${pointValue} pts`
+  scoreBoard.innerText = `${foundPoints} pts`;
 }
   
 
