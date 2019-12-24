@@ -159,6 +159,8 @@ ul {
 /* right side of page */
 #right {
   width: 20%;
+  display: flex;
+  flex-direction: column;
 }
 
 #score-header {
@@ -166,6 +168,11 @@ ul {
 }
 
 #score {
+  color: #fdbf00;
+  font-size: 30px;
+}
+
+#progress {
   color: #fdbf00;
   font-size: 30px;
 }

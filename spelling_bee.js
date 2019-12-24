@@ -3,12 +3,14 @@ const vowels = ['a', 'e', 'i', 'o', 'u'];
 const textBox = document.querySelector('#text-box');
 const foundList = document.querySelector('#found-words');
 const scoreBoard = document.querySelector('#score');
+const progressDiv = document.querySelector('#progress');
 const submit = document.querySelector('#submit');
 const deleteButton = document.querySelector('#delete');
 let validWords;
 let foundWords = [];
 let possiblePoints = 0;
 let foundPoints = 0;
+let progress;
 
 //start button
 const start = document.querySelector('#start');
@@ -40,6 +42,10 @@ start.addEventListener('click', (e) => {
   foundPoints = 0;
   //reset scoreBoard
   scoreBoard.innerText = `${foundPoints} pts`;
+  //reset progress
+  progress = 0
+  //reset progressDiv
+  progressDiv.innerText = ""
 
   //pick letter function is called after response from fetching words from github text file
   function pickLetters() {
@@ -140,6 +146,7 @@ submit.addEventListener('click', (e) => {
     foundList.innerHTML += `<li>${enteredWord}</li>`;
     foundWords.push(enteredWord);
     addPoints(enteredWord);
+    calcPercentage();
     setTimeout(clearText, 550);
   } else {
     //if word has already been entered...
@@ -200,6 +207,18 @@ function addPoints(word) {
   foundPoints += pointValue;
   textBox.innerText = pointValue === 1 ? `${pointValue} pt!` : `${pointValue} pts!`
   scoreBoard.innerText = `${foundPoints} pts`;
+}
+
+//calculate percentage of words found and render progress
+function calcPercentage() {
+  let progress = foundPoints / possiblePoints;
+  if (progress < .05) progressDiv.innerText = "Beginner";
+  if (progress > .05 && progress <= .10) progressDiv.innerText = "Good Start";
+  if (progress > .10 && progress <= .20) progressDiv.innerText = "Warming Up";
+  if (progress > .20 && progress <= .35) progressDiv.innerText = "Solid";
+  if (progress > .35 && progress <= .50) progressDiv.innerText = "Great";
+  if (progress > .50 && progress <= .75) progressDiv.innerText = "Outstanding";
+  if (progress > .75) progressDiv.innerText = "Masterful";
 }
   
 
