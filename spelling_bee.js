@@ -11,6 +11,7 @@ let foundWords = [];
 let possiblePoints = 0;
 let foundPoints = 0;
 let progress;
+let center;
 
 //start button
 const start = document.querySelector('#start');
@@ -21,7 +22,6 @@ const hexes = document.querySelectorAll('.hexagon');
 start.addEventListener('click', (e) => {
   //preserve copy of game letters for reference
   let gameLettersCopy = [];
-  let center;
 
   //click visualizer
   e.target.id = 'start-click';
@@ -43,9 +43,9 @@ start.addEventListener('click', (e) => {
   //reset scoreBoard
   scoreBoard.innerText = `${foundPoints} pts`;
   //reset progress
-  progress = 0
+  progress = 0;
   //reset progressDiv
-  progressDiv.innerText = ""
+  progressDiv.innerText = "";
 
   //pick letter function is called after response from fetching words from github text file
   function pickLetters() {
@@ -148,6 +148,9 @@ submit.addEventListener('click', (e) => {
     addPoints(enteredWord);
     calcPercentage();
     setTimeout(clearText, 550);
+  } else if (!enteredWord.includes(center)) {
+    textBox.innerText = "Must use center letter!";
+    setTimeout(clearText, 550);
   } else {
     //if word has already been entered...
     if (foundWords.includes(enteredWord)) {
@@ -212,15 +215,14 @@ function addPoints(word) {
 //calculate percentage of words found and render progress
 function calcPercentage() {
   let progress = foundPoints / possiblePoints;
-  if (progress < .05) progressDiv.innerText = "Beginner";
-  if (progress > .05 && progress <= .10) progressDiv.innerText = "Good Start";
-  if (progress > .10 && progress <= .20) progressDiv.innerText = "Warming Up";
-  if (progress > .20 && progress <= .35) progressDiv.innerText = "Solid";
-  if (progress > .35 && progress <= .50) progressDiv.innerText = "Great";
-  if (progress > .50 && progress <= .75) progressDiv.innerText = "Outstanding";
-  if (progress > .75) progressDiv.innerText = "Masterful";
+  if (progress > .00 && progress <= .08) progressDiv.innerText = "Beginner";
+  if (progress > .08 && progress <= .17) progressDiv.innerText = "Warming Up!";
+  if (progress > .17 && progress <= .26) progressDiv.innerText = "Solid!";
+  if (progress > .26 && progress <= .35) progressDiv.innerText = "Great";
+  if (progress > .35 && progress <= .44) progressDiv.innerText = "Outstanding!";
+  if (progress > .44 && progress <= .53) progressDiv.innerText = "Masterful!";
+  if (progress > .53) progressDiv.innerText = "Cheating!";
 }
-  
 
 
 
