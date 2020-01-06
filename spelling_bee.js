@@ -95,7 +95,7 @@ start.addEventListener('click', (e) => {
 
   //get all words from github text file of SOWPODS word list
   Promise.all([
-    fetch('https://raw.githubusercontent.com/jmlewis/valett/master/scrabble/sowpods.txt').then(x => x.text())
+    fetch('https://raw.githubusercontent.com/jmlewis/valett/master/scrabble/sowpods.txt').then(resp => resp.text())
   ]).then(([sampleResp]) => {
     pickLetters();
     getWords(sampleResp);
@@ -218,7 +218,7 @@ function calcPercentage() {
   if (progress > .00 && progress <= .08) progressDiv.innerText = "Beginner";
   if (progress > .08 && progress <= .17) progressDiv.innerText = "Warming Up!";
   if (progress > .17 && progress <= .26) progressDiv.innerText = "Solid!";
-  if (progress > .26 && progress <= .35) progressDiv.innerText = "Great";
+  if (progress > .26 && progress <= .35) progressDiv.innerText = "Great!";
   if (progress > .35 && progress <= .44) progressDiv.innerText = "Outstanding!";
   if (progress > .44 && progress <= .53) progressDiv.innerText = "Masterful!";
   if (progress > .53) progressDiv.innerText = "Cheating!";
