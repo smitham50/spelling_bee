@@ -133,7 +133,7 @@ ul {
 /* start button */
 #start {
   background-color: #fdbf00;
-  width: 28%;
+  width: 20%;
   margin-left: 39%;
   margin-right: 31%;
   margin-top: 50px;
@@ -148,7 +148,37 @@ ul {
 
 #start-click {
   background-color: #ffd34c;
-  width: 28%;
+  width: 20%;
+  margin-left: 39%;
+  margin-right: 31%;
+  margin-top: 50px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #282828;
+  text-align: center;
+  vertical-align: middle;
+  border-radius: 20px;
+  font-size: 30px;
+}
+
+#shuffle {
+  background-color: #fdbf00;
+  width: 20%;
+  margin-left: 39%;
+  margin-right: 31%;
+  margin-top: 50px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #282828;
+  text-align: center;
+  vertical-align: middle;
+  border-radius: 20px;
+  font-size: 30px;
+}
+
+#shuffle-click {
+  background-color: #ffd34c;
+  width: 20%;
   margin-left: 39%;
   margin-right: 31%;
   margin-top: 50px;

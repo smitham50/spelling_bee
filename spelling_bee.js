@@ -17,6 +17,8 @@ let center;
 const start = document.querySelector('#start');
 //hexes
 const hexes = document.querySelectorAll('.hexagon');
+//text content of all hexes but center
+let hexVals = [];
 
 //game start chooses letters from vowels and consonants and renders on hex grid
 start.addEventListener('click', (e) => {
@@ -87,7 +89,10 @@ start.addEventListener('click', (e) => {
       } else if (hex.id === 'center') {
         hex.innerText = center;
       } else {
-        hex.innerText = gameLetters.pop();
+        let letter = gameLetters.pop()
+        hex.innerText = letter;
+        //keep track of values of all hexes but center for shuffle function
+        hexVals.push(letter);
       }
     })
   } //end start game event listener
@@ -223,6 +228,28 @@ function calcPercentage() {
   if (progress > .44 && progress <= .53) progressDiv.innerText = "Masterful!";
   if (progress > .53) progressDiv.innerText = "Cheating!";
 }
+
+//shuffle hexes
+function shuffle() {
+  let pop = true;
+  let newVals = [];
+  hexes.forEach(hex => {
+    if (!hex.id) {
+      let letter = pop ? hexVals.pop() : hexVals.shift();
+      pop = !pop;
+      newVals.push(letter);
+      hex.innerText = letter;
+    }
+  })
+  hexVals = [...newVals];
+}
+
+//shuffle button
+const shuffleButton = document.querySelector('#shuffle');
+
+shuffleButton.addEventListener('click', () => {
+  shuffle();
+})
 
 
 
