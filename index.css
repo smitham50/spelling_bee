@@ -130,12 +130,17 @@ ul {
   font-size: 30px;
 }
 
+#start-shuffle {
+  display: flex;
+  justify-content: space-between;
+}
+
 /* start button */
 #start {
   background-color: #fdbf00;
   width: 20%;
-  margin-left: 39%;
-  margin-right: 31%;
+  margin-left: 27%;
+  margin-right: 5%;
   margin-top: 50px;
   padding-left: 5px;
   padding-right: 5px;
@@ -149,8 +154,8 @@ ul {
 #start-click {
   background-color: #ffd34c;
   width: 20%;
-  margin-left: 39%;
-  margin-right: 31%;
+  margin-left: 27%;
+  margin-right: 5%;
   margin-top: 50px;
   padding-left: 5px;
   padding-right: 5px;
@@ -164,8 +169,8 @@ ul {
 #shuffle {
   background-color: #fdbf00;
   width: 20%;
-  margin-left: 39%;
-  margin-right: 31%;
+  margin-left: 5%;
+  margin-right: 25%;
   margin-top: 50px;
   padding-left: 5px;
   padding-right: 5px;
@@ -179,8 +184,8 @@ ul {
 #shuffle-click {
   background-color: #ffd34c;
   width: 20%;
-  margin-left: 39%;
-  margin-right: 31%;
+  margin-left: 5%;
+  margin-right: 25%;
   margin-top: 50px;
   padding-left: 5px;
   padding-right: 5px;

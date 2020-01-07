@@ -247,8 +247,13 @@ function shuffle() {
 //shuffle button
 const shuffleButton = document.querySelector('#shuffle');
 
-shuffleButton.addEventListener('click', () => {
-  shuffle();
+shuffleButton.addEventListener('click', (e) => {
+  hexVals.length > 0 ? shuffle() : null;
+  e.target.id = 'shuffle-click';
+  setTimeout(changeBackground, 100);
+  function changeBackground() {
+    e.target.id = 'shuffle';
+  }
 })
 
 
