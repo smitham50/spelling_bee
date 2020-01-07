@@ -189,7 +189,7 @@ function calculatePoints() {
     //4 points for 7 letters
     if (word.length === 7) possiblePoints += 4;
     //5 points for 8 or more letters
-    if (word.length >= 8) possiblePoints += 5;
+    if (word.length >= 8) possiblePoints += (word.length - 4) + 1;
   })
   console.log("POSSIBLE POINTS", possiblePoints)
 }
@@ -206,7 +206,7 @@ function addPoints(word) {
   //4 points for 7 letters
   if (word.length === 7) pointValue = 4;
   //5 points for 8 or more letters
-  if (word.length >= 8) pointValue = 5;
+  if (word.length >= 8) pointValue = (word.length - 4) + 1;
   foundPoints += pointValue;
   textBox.innerText = pointValue === 1 ? `${pointValue} pt!` : `${pointValue} pts!`
   scoreBoard.innerText = `${foundPoints} pts`;
