@@ -91,10 +91,11 @@ start.addEventListener('click', (e) => {
       } else {
         let letter = gameLetters.pop()
         hex.innerText = letter;
-        //keep track of values of all hexes but center for shuffle function
+        //keep track of values of all hexes except center for shuffle function
         hexVals.push(letter);
       }
     })
+    console.log("VALS", hexVals)
   } //end start game event listener
   
 
@@ -220,13 +221,13 @@ function addPoints(word) {
 //calculate percentage of words found and render progress
 function calcPercentage() {
   let progress = foundPoints / possiblePoints;
-  if (progress > .00 && progress <= .08) progressDiv.innerText = "Beginner";
-  if (progress > .08 && progress <= .17) progressDiv.innerText = "Warming Up!";
-  if (progress > .17 && progress <= .26) progressDiv.innerText = "Solid!";
-  if (progress > .26 && progress <= .35) progressDiv.innerText = "Great!";
-  if (progress > .35 && progress <= .44) progressDiv.innerText = "Outstanding!";
-  if (progress > .44 && progress <= .53) progressDiv.innerText = "Masterful!";
-  if (progress > .53) progressDiv.innerText = "Cheating!";
+  if (progress > .00 && progress <= .06) progressDiv.innerText = "Beginner";
+  if (progress > .06 && progress <= .15) progressDiv.innerText = "Warming Up!";
+  if (progress > .15 && progress <= .24) progressDiv.innerText = "Solid!";
+  if (progress > .24 && progress <= .33) progressDiv.innerText = "Great!";
+  if (progress > .33 && progress <= .42) progressDiv.innerText = "Outstanding!";
+  if (progress > .42 && progress <= .51) progressDiv.innerText = "Masterful!";
+  if (progress > .51) progressDiv.innerText = "Cheating!";
 }
 
 //shuffle hexes
