@@ -48,6 +48,8 @@ start.addEventListener('click', (e) => {
   progress = 0;
   //reset progressDiv
   progressDiv.innerText = "";
+  //reset hexVals
+  hexVals = [];
 
   //pick letter function is called after response from fetching words from github text file
   function pickLetters() {
@@ -95,7 +97,6 @@ start.addEventListener('click', (e) => {
         hexVals.push(letter);
       }
     })
-    console.log("VALS", hexVals)
   } //end start game event listener
   
 
@@ -143,43 +144,14 @@ deleteButton.addEventListener('click', (e) => {
   }
 })
 
-
 //append found words list on successful word entry
 submit.addEventListener('click', (e) => {
-  let enteredWord = textBox.innerText;
-  //if word is valid and hasn't already been found...
-  if (!foundWords.includes(enteredWord) && validWords.includes(enteredWord.toUpperCase())) {
-    foundList.innerHTML += `<li>${enteredWord}</li>`;
-    foundWords.push(enteredWord);
-    addPoints(enteredWord);
-    calcPercentage();
-    setTimeout(clearText, 550);
-  } else if (!enteredWord.includes(center)) {
-    textBox.innerText = "Must use center letter!";
-    setTimeout(clearText, 550);
-  } else {
-    //if word has already been entered...
-    if (foundWords.includes(enteredWord)) {
-      textBox.innerText = "Already found!";
-      setTimeout(clearText, 550);
-    } 
-    //if word isn't valid...
-    else {
-      textBox.innerText = "Invalid word!";
-      setTimeout(clearText, 550);
-    }
-  }
-
+  submitWord();
   //change submit button background on click
   e.target.id = 'submit-click';
   setTimeout(changeBackground, 100);
   function changeBackground() {
     e.target.id = 'submit';
-  }
-
-  //clear text box on submit
-  function clearText() {
-    textBox.innerText = "";
   }
 }) //end word submit event listener
 
@@ -245,7 +217,7 @@ function shuffle() {
   hexVals = [...newVals];
 }
 
-//shuffle button
+//shuffle button and event listener
 const shuffleButton = document.querySelector('#shuffle');
 
 shuffleButton.addEventListener('click', (e) => {
@@ -257,7 +229,44 @@ shuffleButton.addEventListener('click', (e) => {
   }
 })
 
+//add event listener for typing
+document.addEventListener('keydown', (e) => {
+  if (consonants.includes(e.key) || vowels.includes(e.key)) textBox.innerText += e.key;
+  if (e.key === "Backspace") textBox.innerText = textBox.innerText.slice(0, -1);
+  if (e.key === "Enter") {
+    submitWord();
+  }
+})
 
+//submits word in text box and checks validity
+function submitWord() {
+  let enteredWord = textBox.innerText;
+  //if word is valid and hasn't already been found...
+  if (!foundWords.includes(enteredWord) && validWords.includes(enteredWord.toUpperCase())) {
+    foundList.innerHTML += `<li>${enteredWord}</li>`;
+    foundWords.push(enteredWord);
+    addPoints(enteredWord);
+    calcPercentage();
+    setTimeout(clearText, 550);
+  } else if (!enteredWord.includes(center)) {
+    textBox.innerText = "Must use center letter!";
+    setTimeout(clearText, 550);
+  } else {
+    //if word has already been entered...
+    if (foundWords.includes(enteredWord)) {
+      textBox.innerText = "Already found!";
+      setTimeout(clearText, 550);
+    }
+    //if word isn't valid...
+    else {
+      textBox.innerText = "Invalid word!";
+      setTimeout(clearText, 550);
+    }
+  }
+  function clearText() {
+    textBox.innerText = "";
+  }
+}
 
 
 
