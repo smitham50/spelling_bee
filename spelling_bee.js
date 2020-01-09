@@ -1,5 +1,6 @@
 const consonants = ['b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'v', 'w', 'x', 'y', 'z'];
 const vowels = ['a', 'e', 'i', 'o', 'u'];
+const hardLetters = ['c', 'j', 'k', 'q', 'v', 'w', 'x', 'y', 'z'];
 const textBox = document.querySelector('#text-box');
 const foundList = document.querySelector('#found-words');
 const scoreBoard = document.querySelector('#score');
@@ -12,6 +13,7 @@ let possiblePoints = 0;
 let foundPoints = 0;
 let progress;
 let center;
+let anyHard = false;
 
 //start button
 const start = document.querySelector('#start');
@@ -50,6 +52,8 @@ start.addEventListener('click', (e) => {
   progressDiv.innerText = "";
   //reset hexVals
   hexVals = [];
+  //reset anyHard
+  anyHard = false;
 
   //pick letter function is called after response from fetching words from github text file
   function pickLetters() {
@@ -75,10 +79,30 @@ start.addEventListener('click', (e) => {
     //pickConsonants recurses until it finds a consonant that isn't already in gameLetters array
     function pickConsonants() {
       let idx = Math.floor(Math.random() * 20);
-      if (!gameLetters.includes(consonants[idx])) {
-        gameLetters.push(consonants[idx]);
-        gameLettersCopy = [...gameLetters]
-      } else {
+      let letter = consonants[idx];
+      //if letter isn't already on the board
+      if (!gameLetters.includes(letter)) {
+        //if letter is a hard letter
+        if (hardLetters.includes(letter)) {
+          //if there is already a hard letter on the board, pick again
+          if (anyHard) {
+            pickConsonants();
+          } 
+          //otherwise set anyHard to true and put letter on the board
+          else {
+            anyHard = true;
+            gameLetters.push(letter);
+            gameLettersCopy = [...gameLetters]
+          }
+        } 
+        //if letter isn't a hard letter and it isn't already on the board, put it on the board
+        else {
+          gameLetters.push(letter);
+          gameLettersCopy = [...gameLetters]
+        }
+      } 
+      //if letter is already on the board, pick again
+      else {
         pickConsonants();
       }
     }
