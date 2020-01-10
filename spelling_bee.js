@@ -1,12 +1,13 @@
 const consonants = ['b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'v', 'w', 'x', 'y', 'z'];
 const vowels = ['a', 'e', 'i', 'o', 'u'];
-const hardLetters = ['c', 'j', 'k', 'q', 'v', 'w', 'x', 'y', 'z'];
+const hardLetters = ['c', 'g', 'h', 'j', 'k', 'q', 'v', 'w', 'x', 'y', 'z'];
 const textBox = document.querySelector('#text-box');
 const foundList = document.querySelector('#found-words');
 const scoreBoard = document.querySelector('#score');
 const progressDiv = document.querySelector('#progress');
 const submit = document.querySelector('#submit');
 const deleteButton = document.querySelector('#delete');
+let dictionary;
 let validWords;
 let foundWords = [];
 let possiblePoints = 0;
@@ -14,6 +15,18 @@ let foundPoints = 0;
 let progress;
 let center;
 let anyHard = false;
+let dictLoaded = false;
+
+//fetch dictionary on DOM content load
+document.addEventListener("DOMContentLoaded", () => {
+  //get all words from github text file of SOWPODS word list
+  Promise.all([
+    fetch('https://raw.githubusercontent.com/jmlewis/valett/master/scrabble/sowpods.txt').then(resp => resp.text())
+  ]).then(([dict]) => {
+    dictionary = dict;
+    dictLoaded = true;
+  });
+})
 
 //start button
 const start = document.querySelector('#start');
@@ -24,125 +37,132 @@ let hexVals = [];
 
 //game start chooses letters from vowels and consonants and renders on hex grid
 start.addEventListener('click', (e) => {
-  //preserve copy of game letters for reference
-  let gameLettersCopy = [];
+  if (dictLoaded) {
+    //preserve copy of game letters for reference
+    let gameLettersCopy = [];
 
-  //click visualizer
-  e.target.id = 'start-click';
-  setTimeout(changeBackground, 100);
-  function changeBackground() {
-    e.target.id = 'start';
-  }
-  
-  //clear text box on start
-  textBox.innerText = "";
-  //clear found list on start
-  foundList.innerHTML = "";
-  //clear found words array on start
-  foundWords = [];
-  //reset possible points
-  possiblePoints = 0;
-  //reset found points
-  foundPoints = 0;
-  //reset scoreBoard
-  scoreBoard.innerText = `${foundPoints} pts`;
-  //reset progress
-  progress = 0;
-  //reset progressDiv
-  progressDiv.innerText = "";
-  //reset hexVals
-  hexVals = [];
-  //reset anyHard
-  anyHard = false;
-
-  //pick letter function is called after response from fetching words from github text file
-  function pickLetters() {
-    let gameLetters = [];
-    //call pickVowels function twice to add two unique vowels to gameLetters array
-    for (let i = 0; i < 2; i++) {
-      pickVowels();
+    //click visualizer
+    e.target.id = 'start-click';
+    setTimeout(changeBackground, 100);
+    function changeBackground() {
+      e.target.id = 'start';
     }
-    //pickVowels function recurses until it finds a vowel that isn't already in gameLetters array
-    function pickVowels() {
-      let idx = Math.floor(Math.random() * 5)
-      if (!gameLetters.includes(vowels[idx])) {
-        gameLetters.push(vowels[idx]);
-        gameLettersCopy = [...gameLetters]
-      } else {
+
+    //clear text box on start
+    textBox.innerText = "";
+    //clear found list on start
+    foundList.innerHTML = "";
+    //clear found words array on start
+    foundWords = [];
+    //reset possible points
+    possiblePoints = 0;
+    //reset found points
+    foundPoints = 0;
+    //reset scoreBoard
+    scoreBoard.innerText = `${foundPoints} pts`;
+    //reset progress
+    progress = 0;
+    //reset progressDiv
+    progressDiv.innerText = "";
+    //reset hexVals
+    hexVals = [];
+    //reset anyHard
+    anyHard = false;
+
+    //pick letter function is called after response from fetching words from github text file
+    function pickLetters() {
+      let gameLetters = [];
+      //call pickVowels function twice to add two unique vowels to gameLetters array
+      for (let i = 0; i < 2; i++) {
         pickVowels();
       }
-    }
-    //call pickConsonants five times to add five unique consonants to gameLetters array
-    for (let i = 0; i < 5; i++) {
-      pickConsonants();
-    }
-    //pickConsonants recurses until it finds a consonant that isn't already in gameLetters array
-    function pickConsonants() {
-      let idx = Math.floor(Math.random() * 20);
-      let letter = consonants[idx];
-      //if letter isn't already on the board
-      if (!gameLetters.includes(letter)) {
-        //if letter is a hard letter
-        if (hardLetters.includes(letter)) {
-          //if there is already a hard letter on the board, pick again
-          if (anyHard) {
-            pickConsonants();
-          } 
-          //otherwise set anyHard to true and put letter on the board
+      //pickVowels function recurses until it finds a vowel that isn't already in gameLetters array
+      function pickVowels() {
+        let idx = Math.floor(Math.random() * 5)
+        if (!gameLetters.includes(vowels[idx])) {
+          gameLetters.push(vowels[idx]);
+          gameLettersCopy = [...gameLetters]
+        } else {
+          pickVowels();
+        }
+      }
+      //call pickConsonants five times to add five unique consonants to gameLetters array
+      for (let i = 0; i < 5; i++) {
+        pickConsonants();
+      }
+      //pickConsonants recurses until it finds a consonant that isn't already in gameLetters array
+      function pickConsonants() {
+        let idx = Math.floor(Math.random() * 20);
+        let letter = consonants[idx];
+        //if letter isn't already on the board
+        if (!gameLetters.includes(letter)) {
+          //if letter is a hard letter
+          if (hardLetters.includes(letter)) {
+            //if there is already a hard letter on the board, pick again
+            if (anyHard) {
+              pickConsonants();
+            }
+            //otherwise set anyHard to true and put letter on the board
+            else {
+              anyHard = true;
+              gameLetters.push(letter);
+              gameLettersCopy = [...gameLetters]
+            }
+          }
+          //if letter isn't a hard letter and it isn't already on the board, put it on the board
           else {
-            anyHard = true;
             gameLetters.push(letter);
             gameLettersCopy = [...gameLetters]
           }
-        } 
-        //if letter isn't a hard letter and it isn't already on the board, put it on the board
-        else {
-          gameLetters.push(letter);
-          gameLettersCopy = [...gameLetters]
         }
-      } 
-      //if letter is already on the board, pick again
-      else {
-        pickConsonants();
+        //if letter is already on the board, pick again
+        else {
+          pickConsonants();
+        }
       }
+
+      //print game letters in hexes
+      center = gameLetters.shift();
+      hexes.forEach(hex => {
+        if (hex.id === 'hidden1' || hex.id === 'hidden2') {
+          null;
+        } else if (hex.id === 'center') {
+          hex.innerText = center;
+        } else {
+          let letter = gameLetters.pop()
+          hex.innerText = letter;
+          //keep track of values of all hexes except center for shuffle function
+          hexVals.push(letter);
+        }
+      })
     }
 
-    //print game letters in hexes
-    center = gameLetters.shift();
-    hexes.forEach(hex => {
-      if (hex.id === 'hidden1' || hex.id === 'hidden2') {
-        null;
-      } else if (hex.id === 'center') {
-        hex.innerText = center;
-      } else {
-        let letter = gameLetters.pop()
-        hex.innerText = letter;
-        //keep track of values of all hexes except center for shuffle function
-        hexVals.push(letter);
-      }
-    })
-  } //end start game event listener
-  
 
-  //get all words from github text file of SOWPODS word list
-  Promise.all([
-    fetch('https://raw.githubusercontent.com/jmlewis/valett/master/scrabble/sowpods.txt').then(resp => resp.text())
-  ]).then(([sampleResp]) => {
-    pickLetters();
-    getWords(sampleResp);
-    calculatePoints();
-  });
-
-  //filter invalid words
-  function getWords(words) {
-    words = words.split('\n').map(word => word.trim());
-    validWords = words.filter(word => {
-      return word.length >= 4 && word.includes(center.toUpperCase()) && !!!word.split('').find(char => {
+    //filter invalid words
+    function getWords(words) {
+      words = words.split('\n').map(word => word.trim());
+      validWords = words.filter(word => {
+        return word.length >= 4 && word.includes(center.toUpperCase()) && !!!word.split('').find(char => {
           return !gameLettersCopy.includes(char.toLowerCase());
+        })
       })
-    })
-    console.log(validWords);
-  };
+      if (validWords.length > 150 || validWords.length < 25) {
+        console.log("REPICKED")
+        pickLetters();
+        getWords(dictionary);
+        possiblePoints = 0;
+      } else {
+        calculatePoints();
+        console.log(validWords);
+      }
+      
+    };
+  }
+  
+  //pick letters, filter valid words and calculate possible points
+  pickLetters();
+  getWords(dictionary);
+  calculatePoints();
 }) //end of start event listener
 
 //add click event listener to hexes, clicked hexes add text to text box
@@ -291,6 +311,4 @@ function submitWord() {
     textBox.innerText = "";
   }
 }
-
-
 
