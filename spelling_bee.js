@@ -71,6 +71,7 @@ start.addEventListener('click', (e) => {
 
     //pick letter function is called after response from fetching words from github text file
     function pickLetters() {
+      hexVals = [];
       let gameLetters = [];
       //call pickVowels function twice to add two unique vowels to gameLetters array
       for (let i = 0; i < 2; i++) {
@@ -237,27 +238,31 @@ function addPoints(word) {
 //calculate percentage of words found and render progress
 function calcPercentage() {
   let progress = foundPoints / possiblePoints;
-  if (progress > .00 && progress <= .06) progressDiv.innerText = "Beginner";
-  if (progress > .06 && progress <= .15) progressDiv.innerText = "Warming Up!";
-  if (progress > .15 && progress <= .24) progressDiv.innerText = "Solid!";
-  if (progress > .24 && progress <= .33) progressDiv.innerText = "Great!";
-  if (progress > .33 && progress <= .42) progressDiv.innerText = "Outstanding!";
-  if (progress > .42 && progress <= .51) progressDiv.innerText = "Masterful!";
-  if (progress > .51) progressDiv.innerText = "Cheating!";
+  if (progress > .00 && progress <= .05) progressDiv.innerText = "Beginner";
+  if (progress > .05 && progress <= .14) progressDiv.innerText = "Warming Up!";
+  if (progress > .14 && progress <= .23) progressDiv.innerText = "Solid!";
+  if (progress > .23 && progress <= .32) progressDiv.innerText = "Great!";
+  if (progress > .32 && progress <= .41) progressDiv.innerText = "Outstanding!";
+  if (progress > .41 && progress <= .50) progressDiv.innerText = "Masterful!";
+  if (progress > .50) progressDiv.innerText = "Cheating!";
 }
 
 //shuffle hexes
 function shuffle() {
+  console.log("ORIGINAL HEX VALUES", hexVals)
   let pop = true;
   let newVals = [];
   hexes.forEach(hex => {
     if (!hex.id) {
+      console.log("HEXVALS", hexVals)
       let letter = pop ? hexVals.pop() : hexVals.shift();
+      // console.log("Letter", letter)
       pop = !pop;
       newVals.push(letter);
       hex.innerText = letter;
     }
   })
+  console.log("NEW VALS", newVals)
   hexVals = [...newVals];
 }
 
