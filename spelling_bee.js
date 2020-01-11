@@ -23,7 +23,8 @@ document.addEventListener("DOMContentLoaded", () => {
   Promise.all([
     fetch('https://raw.githubusercontent.com/patrickherrmann/BoggleSolver/master/twl.txt').then(resp => resp.text())
   ]).then(([dict]) => {
-    dictionary = dict;
+    dict = dict.split('\n').map(word => word.trim());
+    dictionary = dict.filter(word => word.length >= 4);
     dictLoaded = true;
   });
 })
@@ -141,9 +142,8 @@ start.addEventListener('click', (e) => {
 
     //filter invalid words
     function getWords(words) {
-      words = words.split('\n').map(word => word.trim());
       validWords = words.filter(word => {
-        return word.length >= 4 && word.includes(center.toUpperCase()) && !!!word.split('').find(char => {
+        return word.includes(center.toUpperCase()) && !!!word.split('').find(char => {
           return !gameLettersCopy.includes(char.toLowerCase());
         })
       })
