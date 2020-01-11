@@ -19,7 +19,7 @@ let dictLoaded = false;
 
 //fetch dictionary on DOM content load
 document.addEventListener("DOMContentLoaded", () => {
-  //get all words from github text file of scrabble TWL dictionary
+  //get all words from github text file of scrabble TWL diction
   Promise.all([
     fetch('https://raw.githubusercontent.com/patrickherrmann/BoggleSolver/master/twl.txt').then(resp => resp.text())
   ]).then(([dict]) => {
@@ -147,7 +147,7 @@ start.addEventListener('click', (e) => {
           return !gameLettersCopy.includes(char.toLowerCase());
         })
       })
-      if (validWords.length > 150 || validWords.length < 25) {
+      if (validWords.length > 125 || validWords.length < 25) {
         console.log("REPICKED")
         pickLetters();
         getWords(dictionary);
@@ -249,20 +249,16 @@ function calcPercentage() {
 
 //shuffle hexes
 function shuffle() {
-  console.log("ORIGINAL HEX VALUES", hexVals)
   let pop = true;
   let newVals = [];
   hexes.forEach(hex => {
     if (!hex.id) {
-      console.log("HEXVALS", hexVals)
       let letter = pop ? hexVals.pop() : hexVals.shift();
-      // console.log("Letter", letter)
       pop = !pop;
       newVals.push(letter);
       hex.innerText = letter;
     }
   })
-  console.log("NEW VALS", newVals)
   hexVals = [...newVals];
 }
 
