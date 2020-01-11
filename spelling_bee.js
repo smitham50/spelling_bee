@@ -19,9 +19,9 @@ let dictLoaded = false;
 
 //fetch dictionary on DOM content load
 document.addEventListener("DOMContentLoaded", () => {
-  //get all words from github text file of SOWPODS word list
+  //get all words from github text file of scrabble TWL dictionary
   Promise.all([
-    fetch('https://raw.githubusercontent.com/jmlewis/valett/master/scrabble/sowpods.txt').then(resp => resp.text())
+    fetch('https://raw.githubusercontent.com/patrickherrmann/BoggleSolver/master/twl.txt').then(resp => resp.text())
   ]).then(([dict]) => {
     dictionary = dict;
     dictLoaded = true;
@@ -238,13 +238,13 @@ function addPoints(word) {
 //calculate percentage of words found and render progress
 function calcPercentage() {
   let progress = foundPoints / possiblePoints;
-  if (progress > .00 && progress <= .05) progressDiv.innerText = "Beginner";
-  if (progress > .05 && progress <= .14) progressDiv.innerText = "Warming Up!";
-  if (progress > .14 && progress <= .23) progressDiv.innerText = "Solid!";
-  if (progress > .23 && progress <= .32) progressDiv.innerText = "Great!";
-  if (progress > .32 && progress <= .41) progressDiv.innerText = "Outstanding!";
-  if (progress > .41 && progress <= .50) progressDiv.innerText = "Masterful!";
-  if (progress > .50) progressDiv.innerText = "Cheating!";
+  if (progress > .00 && progress <= .04) progressDiv.innerText = "Beginner";
+  if (progress > .04 && progress <= .13) progressDiv.innerText = "Warming Up!";
+  if (progress > .13 && progress <= .22) progressDiv.innerText = "Solid!";
+  if (progress > .22 && progress <= .31) progressDiv.innerText = "Great!";
+  if (progress > .31 && progress <= .40) progressDiv.innerText = "Outstanding!";
+  if (progress > .40 && progress <= .49) progressDiv.innerText = "Masterful!";
+  if (progress > .49) progressDiv.innerText = "Cheating!";
 }
 
 //shuffle hexes
