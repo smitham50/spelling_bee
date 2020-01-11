@@ -292,7 +292,7 @@ ul {
   overflow: hidden;
   color: #282828;
   text-align: center;
-  line-height: 4.5em;
+  line-height: 25vh;
 }
 
 #grid li .clicked {
@@ -310,7 +310,7 @@ ul {
   overflow: hidden;
   color: #282828;
   text-align: center;
-  line-height: 4.5em;
+  line-height: 25vh;
 }
 
 /* hide first of row 1 and 3 */

@@ -239,12 +239,12 @@ function addPoints(word) {
 function calcPercentage() {
   let progress = foundPoints / possiblePoints;
   if (progress > .00 && progress <= .04) progressDiv.innerText = "Beginner";
-  if (progress > .04 && progress <= .13) progressDiv.innerText = "Warming Up!";
-  if (progress > .13 && progress <= .22) progressDiv.innerText = "Solid!";
-  if (progress > .22 && progress <= .31) progressDiv.innerText = "Great!";
-  if (progress > .31 && progress <= .40) progressDiv.innerText = "Outstanding!";
-  if (progress > .40 && progress <= .49) progressDiv.innerText = "Masterful!";
-  if (progress > .49) progressDiv.innerText = "Cheating!";
+  if (progress > .04 && progress <= .12) progressDiv.innerText = "Warming Up!";
+  if (progress > .12 && progress <= .21) progressDiv.innerText = "Solid!";
+  if (progress > .21 && progress <= .30) progressDiv.innerText = "Great!";
+  if (progress > .30 && progress <= .39) progressDiv.innerText = "Outstanding!";
+  if (progress > .39 && progress <= .48) progressDiv.innerText = "Masterful!";
+  if (progress > .48) progressDiv.innerText = "Cheating!";
 }
 
 //shuffle hexes
