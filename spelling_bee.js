@@ -276,7 +276,27 @@ shuffleButton.addEventListener('click', (e) => {
 
 //add event listener for typing
 document.addEventListener('keydown', (e) => {
-  if (consonants.includes(e.key) || vowels.includes(e.key)) textBox.innerText += e.key;
+  //if typed key is a letter
+  if (consonants.includes(e.key) || vowels.includes(e.key)) {
+    let typedHex;
+    hexes.forEach(hex => {
+      if (hex.innerText === e.key) {
+        typedHex = hex;
+      }
+    })
+    //if typed letter is in one of the hexes, change hex background briefly and change it back
+    if (typedHex) {
+      typedHex.className = 'clicked';
+      setTimeout(changeBackground, 100);
+
+      function changeBackground() {
+        typedHex.className = 'hexagon';
+      }
+    }
+    //add letter to textbox
+    textBox.innerText += e.key;
+  }
+
   if (e.key === "Backspace") textBox.innerText = textBox.innerText.slice(0, -1);
   if (e.key === "Enter") {
     submitWord();
