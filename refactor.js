@@ -308,7 +308,7 @@ function submitWord() {
   let enteredWord = textBox.innerText;
   //if word is valid and hasn't already been found...
   if (!foundWords.includes(enteredWord) && validWords.includes(enteredWord.toUpperCase())) {
-    foundList.innerHTML += `<li>${enteredWord}</li>`;
+    foundList.innerHTML = `<li>${enteredWord}</li>` + foundList.innerHTML;
     foundWords.push(enteredWord);
     addPoints(enteredWord);
     calcPercentage();

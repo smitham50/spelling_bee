@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <script src="./refactor.js" defer></script>
-  <link rel="stylesheet" media="screen and (min-width:800px)" href="./index.css">
+  <link rel="stylesheet" media="screen and (min-width:501px)" href="./refactor.css">
   <link rel="stylesheet" media="screen and (max-width:500px)" href="./mobile.css">
   <link href="https://fonts.googleapis.com/css?family=Baloo+Bhai&display=swap" rel="stylesheet">
   <title>Spelling Bee</title>
@@ -14,7 +14,9 @@
 
 <body>
   <div id="left">
-    <div id="found">Found words:</div>
+    <div id="new-game">
+      <div id="start">New Game</div>
+    </div>
     <div id="list-div">
       <ul id="found-words">
   
@@ -27,9 +29,7 @@
     </div>
   </div>
   <div id="text-entry">
-    <div id="delete" class="btn">Delete</div>
     <div id="text-box" class="btn"></div>
-    <div id="submit" class="btn">Submit</div>
   </div>
   <div id="center">
     <ul id="grid" class="clear">
@@ -63,8 +63,9 @@
     </ul>
     
     <div id="start-shuffle">
-      <div id="start" class="btn">Start</div>
+      <div id="delete" class="btn">Delete</div>
       <div id="shuffle" class="btn">Shuffle</div>
+      <div id="submit" class="btn">Submit</div>
     </div>
   </div>
 </body>
