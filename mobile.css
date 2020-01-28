@@ -13,12 +13,13 @@
   user-select: none;
 }
 
-body {
+
+html, body {
   background: #fff;
   font-family: 'Baloo Bhai';
   font-size: 1em;
   width: 100vw;
-  height: 100vh;
+  height: 95vh;
   display: flex;
   flex-direction: column;
 }
