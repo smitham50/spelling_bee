@@ -105,7 +105,7 @@ ul#found-words.expand {
   border-radius: 5px;
   border: solid 1px;
   z-index: 1;
-  transition: .4s ease;
+  /* transition: .4s ease; */
 }
 
 ul#found-words li {
