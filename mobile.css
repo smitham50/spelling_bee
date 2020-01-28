@@ -8,8 +8,8 @@
 body {
   background: #fff;
   font-family: 'Baloo Bhai';
-  font-size: 18px;
-  padding: 10px;
+  font-size: 1em;
+  width: 100vw;
   display: flex;
   flex-direction: column;
   -webkit-touch-callout: none; /* iOS Safari */
@@ -160,7 +160,7 @@ img#expand {
   height: 75%;
   margin: 0 auto;
   margin-bottom: 6vh;
-  padding: 0 16vw 0 0;
+  padding: 0 13vw 0 2vw;
 }
 
 .clear:after {
@@ -288,7 +288,6 @@ img#expand {
 #start-shuffle {
   display: flex;
   justify-content: space-evenly;
-  padding-right: 4%;
   margin-bottom: 1vh;
 }
 
