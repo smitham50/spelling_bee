@@ -94,14 +94,12 @@ ul#found-words {
 
 ul#found-words.expand {
   width: 90%;
-  height: 67vh;
+  height: 72vh;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
   justify-content: center;
   overflow-x: auto;
-  position: relative;
-  top: 100%;
   background-color: #fff;
   border-radius: 5px;
   border: solid 1px;
@@ -116,7 +114,6 @@ ul#found-words li {
 img#expand {
   height: 90%;
   width: auto;
-  position: relative;
 }
 
 /* right side of page */
