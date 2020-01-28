@@ -25,7 +25,7 @@ body {
 
 #new-game {
   margin-top: 5%;
-  margin-bottom: 10%;
+  margin-bottom: 6%;
   display: flex;
   justify-content: center;
 }
@@ -284,11 +284,11 @@ img#expand {
 
 /* button styling */
 .btn {
-  font-size: 1em;
+  font-size: .7em;
   padding-top: 5%;
   padding-bottom:5%;
-  width: 17%;
-  height: 17%;
+  width: 15%;
+  height: auto;
   border-radius: 50px;
   background-color: #fdbf00;
   color: #282828;
@@ -296,11 +296,11 @@ img#expand {
 }
 
 .btn-click {
-  font-size: 1em;
+  font-size: .7em;
   padding-top: 5%;
   padding-bottom:5%;
-  width: 17%;
-  height: 17%;
+  width: 15%;
+  height: auto;
   border-radius: 50px;
   background-color: #ffd34c;
   color: #282828;
