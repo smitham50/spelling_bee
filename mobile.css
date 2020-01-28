@@ -40,7 +40,6 @@ html, body {
   width: 100%;
   border-radius: 50px;
   border: solid 1px;
-  /* background-color: #fdbf00; */
   color: #282828;
   text-align: center;
 }
@@ -52,7 +51,6 @@ html, body {
   width: 100%;
   border-radius: 50px;
   border: solid 1px;
-  /* background-color: #ffd34c; */
   color: #282828;
   text-align: center;
 }
@@ -94,7 +92,7 @@ ul#found-words {
 
 ul#found-words.expand {
   width: 90%;
-  height: 72vh;
+  height: 80vh;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
@@ -104,7 +102,6 @@ ul#found-words.expand {
   border-radius: 5px;
   border: solid 1px;
   z-index: 1;
-  /* transition: .4s ease; */
 }
 
 ul#found-words li {
