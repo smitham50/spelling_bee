@@ -96,7 +96,7 @@ ul#found-words.expand {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: start;
   overflow-x: auto;
   background-color: #fff;
   border-radius: 5px;
