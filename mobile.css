@@ -3,7 +3,7 @@
   padding: 0;
   box-sizing: border-box;
   touch-action: manipulation;
-  outline: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 body {
