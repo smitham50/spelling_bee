@@ -19,7 +19,8 @@ html, body {
   font-family: 'Baloo Bhai';
   font-size: 1em;
   width: 100vw;
-  height: 95vh;
+  height: 100vh;
+  height: calc(var(--vh, 1vh) * 100);
   display: flex;
   flex-direction: column;
 }
@@ -163,7 +164,7 @@ img#expand {
   border-radius: 50px;
   color: #282828;
   text-align: center;
-  font-size: 1em;
+  font-size: 1.2em;
 }
 
 

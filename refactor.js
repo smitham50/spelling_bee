@@ -19,6 +19,16 @@ let anyHard = false;
 let dictLoaded = false;
 let expanded = false;
 
+//calculate window size
+let vh = window.innerHeight * 0.01;
+document.documentElement.style.setProperty('--vh', `${vh}px`);
+
+//recalculate if window is resized
+window.addEventListener('resize', () => {
+  let vh = window.innerHeight * 0.01;
+  document.documentElement.style.setProperty('--vh', `${vh}px`);
+})
+
 //fetch dictionary on DOM content load
 document.addEventListener("DOMContentLoaded", () => {
   //get all words from github text file of scrabble TWL diction
