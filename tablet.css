@@ -9,7 +9,7 @@ body {
   background: #fff;
   font-family: 'Baloo Bhai';
   font-size: 18px;
-  margin: 0 20%;
+  margin: 0 11%;
   padding: 10px;
   display: flex;
   flex-direction: column;
@@ -30,7 +30,7 @@ body {
 
 /* start button */
 #start {
-  font-size: 1em;
+  font-size: 1.5em;
   padding-top: 4.5%;
   padding-bottom:5%;
   margin: 0 10%;
@@ -43,9 +43,10 @@ body {
 }
 
 #start-click {
-  font-size: 1em;
+  font-size: 1.5em;
   padding-top: 4.5%;
   padding-bottom:5%;
+  margin: 0 10%;
   width: 100%;
   border-radius: 50px;
   border: solid 1px;
@@ -69,9 +70,10 @@ body {
 #list-div {
   display: flex;
   width: 100%;
-  height: 12vh;
+  height: 8vh;
   border: solid 1px;
   border-radius: 5px;
+  font-size: 1.5em;
 }
 
 
@@ -101,11 +103,12 @@ img#expand {
 /* right side of page */
 #right {
   width: 100%;
-  height: 12vh;
+  height: 8vh;
   margin-bottom: 2vh;
   border: solid 1px;
   border-radius: 5px;
   display: flex;
+  font-size: 1.5em;
 }
 
 /* #score-header {
@@ -114,14 +117,12 @@ img#expand {
 
 #score {
   width: 50%;
-  font-size: 18px;
   text-align: center;
   padding: 4% 0;
 }
 
 #progress {
   width: 50%;
-  font-size: 18px;
   text-align: center;
   padding: 4% 0;
 }
@@ -135,15 +136,15 @@ img#expand {
 
 /* text-box */
 #text-box {
-  width: 72vw;
-  height: 5vh;
+  width: 57vw;
+  height: 6vh;
   padding: 1vh 0;
   overflow: auto;
   background-color: #fdbf00;
   border-radius: 50px;
   color: #282828;
   text-align: center;
-  font-size: 18px;
+  font-size: 1.5em;
 }
 
 
@@ -159,7 +160,7 @@ img#expand {
 /* grid */
 #grid {
   position: relative;
-  width: 65vw;
+  width: 82vw;
   height: 75%;
   margin-bottom: 6vh;
   padding: 0 16vw 0 0;
@@ -231,7 +232,7 @@ img#expand {
   color: #282828;
   text-align: center;
   padding: 37% 0;
-  font-size: 28px;
+  font-size: 2.1em;
 }
 
 #grid li .clicked {
@@ -250,7 +251,7 @@ img#expand {
   color: #282828;
   text-align: center;
   padding: 37% 0;
-  font-size: 28px;
+  font-size: 2.1em;
 }
 
 /* hide first of row 1 and 3 */
@@ -264,11 +265,11 @@ img#expand {
 
 /* button styling */
 .btn {
-  font-size: 11px;
-  padding-top: 4.5%;
+  font-size: 1.1em;
+  padding-top: 5%;
   padding-bottom:5%;
-  width: 48px;
-  height:48px;
+  width: 15%;
+  height: 15%;
   border-radius: 50px;
   background-color: #fdbf00;
   color: #282828;
@@ -276,11 +277,11 @@ img#expand {
 }
 
 .btn-click {
-  font-size: 11px;
-  padding-top: 4.5%;
+  font-size: 1.1em;
+  padding-top: 5%;
   padding-bottom:5%;
-  width: 48px;
-  height:48px;
+  width: 15%;
+  height: 15%;
   border-radius: 50px;
   background-color: #ffd34c;
   color: #282828;
@@ -290,7 +291,7 @@ img#expand {
 #start-shuffle {
   display: flex;
   justify-content: space-evenly;
-  padding-right: 4%;
+  padding-right: 24%;
   margin-bottom: 1vh;
 }
 
