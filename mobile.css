@@ -24,7 +24,7 @@ body {
 
 #new-game {
   margin-top: 5%;
-  margin-bottom: 5%;
+  margin-bottom: 10%;
   display: flex;
   justify-content: center;
 }
@@ -89,13 +89,31 @@ ul#found-words {
   overflow: hidden;
 }
 
+ul#found-words.expand {
+  width: 90%;
+  height: 76vh;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  overflow-x: auto;
+  position: relative;
+  top: 100%;
+  background-color: #fff;
+  border-radius: 5px;
+  border: solid 1px;
+  z-index: 1;
+  transition: .4s ease;
+}
+
 ul#found-words li {
   margin: 5px;
 }
 
 img#expand {
-  height: 48px;
-  width: 48px;
+  height: 90%;
+  width: auto;
+  position: relative;
 }
 
 /* right side of page */
@@ -143,7 +161,7 @@ img#expand {
   border-radius: 50px;
   color: #282828;
   text-align: center;
-  font-size: 18px;
+  font-size: 1em;
 }
 
 
@@ -265,11 +283,11 @@ img#expand {
 
 /* button styling */
 .btn {
-  font-size: 11px;
-  padding-top: 4%;
+  font-size: 1em;
+  padding-top: 5%;
   padding-bottom:5%;
-  width: 48px;
-  height:48px;
+  width: 17%;
+  height: 17%;
   border-radius: 50px;
   background-color: #fdbf00;
   color: #282828;
@@ -277,11 +295,11 @@ img#expand {
 }
 
 .btn-click {
-  font-size: 11px;
-  padding-top: 4%;
+  font-size: 1em;
+  padding-top: 5%;
   padding-bottom:5%;
-  width: 48px;
-  height:48px;
+  width: 17%;
+  height: 17%;
   border-radius: 50px;
   background-color: #ffd34c;
   color: #282828;

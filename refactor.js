@@ -7,6 +7,7 @@ const scoreBoard = document.querySelector('#score');
 const progressDiv = document.querySelector('#progress');
 const submit = document.querySelector('#submit');
 const deleteButton = document.querySelector('#delete');
+const listButton = document.querySelector('#expand');
 let dictionary;
 let validWords;
 let foundWords = [];
@@ -16,6 +17,7 @@ let progress;
 let center;
 let anyHard = false;
 let dictLoaded = false;
+let expanded = false;
 
 //fetch dictionary on DOM content load
 document.addEventListener("DOMContentLoaded", () => {
@@ -332,3 +334,19 @@ function submitWord() {
     textBox.innerText = "";
   }
 }
+
+//expand found words list on hamburger button click
+function expandList() {
+  if (!expanded) {
+    foundList.className = 'expand';
+    expanded = true;
+  } else {
+    foundList.classList.remove('expand');
+    expanded = false
+  }
+}
+
+//event listener for hamburger button
+listButton.addEventListener('click', () => {
+  expandList();
+})
