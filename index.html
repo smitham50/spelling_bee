@@ -1,23 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <script src="./spelling_bee.js" defer></script>
-  <link rel="stylesheet" href="./index.css">
+  <script src="./refactor.js" defer></script>
+  <link rel="stylesheet" media="screen and (min-width:1025px)" href="./desktop.css">
+  <link rel="stylesheet" media="screen and (max-width:1024px)" href="./tablet.css">
   <link rel="stylesheet" media="screen and (max-width:500px)" href="./mobile.css">
   <link href="https://fonts.googleapis.com/css?family=Baloo+Bhai&display=swap" rel="stylesheet">
   <title>Spelling Bee</title>
 </head>
+
 <body>
   <div id="left">
-    <div id="found">Found words:</div>
+    <div id="new-game">
+      <div id="start">New Game</div>
+    </div>
     <div id="list-div">
       <ul id="found-words">
 
       </ul>
+      <img src="./img/hamburgericon.png" alt="expandbutton" id="expand">
     </div>
+    <div id="right">
+      <div id="score"></div>
+      <div id="progress"></div>
+    </div>
+  </div>
+  <div id="text-entry">
+    <div id="text-box" class="btn"></div>
   </div>
   <div id="center">
     <ul id="grid" class="clear">
@@ -49,20 +62,13 @@
         <div class="hexagon"></div>
       </li>
     </ul>
-    <div id="text-entry">
+
+    <div id="start-shuffle">
       <div id="delete" class="btn">Delete</div>
-      <div id="text-box" class="btn"></div>
+      <div id="shuffle" class="btn">Shuffle</div>
       <div id="submit" class="btn">Submit</div>
     </div>
-    <div id="start-shuffle">
-      <div id="start" class="btn">Start</div>
-      <div id="shuffle" class="btn">Shuffle</div>
-    </div>
-  </div>
-  <div id="right">
-    <div id="score-header">Score:</div>
-    <div id="score"></div>
-    <div id="progress"></div>
   </div>
 </body>
+
 </html>
