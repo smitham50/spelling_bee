@@ -92,7 +92,7 @@ ul#found-words {
 
 ul#found-words.expand {
   width: 90%;
-  height: 80vh;
+  height: 79vh;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
@@ -283,7 +283,7 @@ img#expand {
   font-size: .7em;
   padding-top: 5%;
   padding-bottom:5%;
-  width: 15%;
+  width: 14%;
   height: auto;
   border-radius: 50px;
   background-color: #fdbf00;
@@ -295,7 +295,7 @@ img#expand {
   font-size: .7em;
   padding-top: 5%;
   padding-bottom:5%;
-  width: 15%;
+  width: 14%;
   height: auto;
   border-radius: 50px;
   background-color: #ffd34c;
