@@ -13,11 +13,12 @@
   user-select: none;
 }
 
-body {
+html, body {
   background: #fff;
   font-family: 'Baloo Bhai';
-  font-size: 18px;
+  font-size: 1em;
   width: 100vw;
+  height: calc(var(--vh, 1vh) * 100);
   display: flex;
   flex-direction: column;
 }
@@ -36,9 +37,8 @@ body {
   padding-bottom:5%;
   margin: 0 10%;
   width: 100%;
-  border-radius: 50px;
+  border-radius: 50vh;
   border: solid 1px;
-  /* background-color: #fdbf00; */
   color: #282828;
   text-align: center;
 }
@@ -49,24 +49,19 @@ body {
   padding-bottom:5%;
   margin: 0 10%;
   width: 100%;
-  border-radius: 50px;
+  border-radius: 50vh;
   border: solid 1px;
-  /* background-color: #ffd34c; */
   color: #282828;
   text-align: center;
 }
 
-/* left side of page */
-#left {
+/* top */
+#top {
   display: flex;
   padding: 0 10%;
   flex-direction: column;
   justify-content: space-around;
 }
-
-/* #found {
-  color: #fdbf00;
-} */
 
 #list-div {
   display: flex;
@@ -76,8 +71,6 @@ body {
   border-radius: 5px;
   font-size: 1.5em;
 }
-
-
 
 ul {
   list-style: none;
@@ -92,17 +85,31 @@ ul#found-words {
   overflow: hidden;
 }
 
+ul#found-words.expand {
+  width: 90%;
+  height: 79vh;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: start;
+  overflow-x: auto;
+  background-color: #fff;
+  border-radius: 5px;
+  border: solid 1px;
+  z-index: 1;
+}
+
 ul#found-words li {
-  margin: 5px;
+  margin: 3%;
 }
 
 img#expand {
-  height: 48px;
-  width: 48px;
+  height: 90%;
+  width: auto;
 }
 
-/* right side of page */
-#right {
+/* stats box */
+#stats-div {
   width: 100%;
   height: 8vh;
   margin-bottom: 2vh;
@@ -111,10 +118,6 @@ img#expand {
   display: flex;
   font-size: 1.5em;
 }
-
-/* #score-header {
-  color: #fdbf00;
-} */
 
 #score {
   width: 50%;
@@ -132,7 +135,7 @@ img#expand {
 #text-entry {
   display: flex;
   justify-content: center;
-  margin-bottom:4vh;
+  margin-bottom: 4vh;
 }
 
 /* text-box */
@@ -142,13 +145,11 @@ img#expand {
   padding: 1vh 0;
   overflow: auto;
   background-color: #fdbf00;
-  border-radius: 50px;
+  border-radius: 50vh;
   color: #282828;
   text-align: center;
   font-size: 1.5em;
 }
-
-
 
 /* center div with hex grid */
 #center {
@@ -267,11 +268,10 @@ img#expand {
 /* button styling */
 .btn {
   font-size: 1.1em;
-  padding-top: 5%;
-  padding-bottom:5%;
-  width: 15%;
-  height: 15%;
-  border-radius: 50px;
+  padding: 2%;
+  width: 11%;
+  height: 100%;
+  border-radius: 50vh;
   background-color: #fdbf00;
   color: #282828;
   text-align: center;
@@ -279,11 +279,10 @@ img#expand {
 
 .btn-click {
   font-size: 1.1em;
-  padding-top: 5%;
-  padding-bottom:5%;
-  width: 15%;
-  height: 15%;
-  border-radius: 50px;
+  padding: 2%;
+  width: 11%;
+  height: 100%;
+  border-radius: 50vh;
   background-color: #ffd34c;
   color: #282828;
   text-align: center;
@@ -294,10 +293,6 @@ img#expand {
   justify-content: space-evenly;
   margin-bottom: 1vh;
 }
-
-/* #delete {
-  margin-right: 5vw;
-} */
 
 #delete-click {
   background-color: #ffd34c;
@@ -312,10 +307,6 @@ img#expand {
 #shuffle-click {
   background-color: #ffd34c;
 }
-
-/* #submit {
-  margin-left: 5vw;
-} */
 
 #submit-click {
   background-color: #ffd34c;

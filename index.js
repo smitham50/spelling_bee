@@ -48,7 +48,7 @@ const hexes = document.querySelectorAll('.hexagon');
 //text content of all hexes but center
 let hexVals = [];
 
-//game start chooses letters from vowels and consonants and renders on hex grid
+//game start resets variables, chooses letters from vowels and consonants and renders on hex grid
 start.addEventListener('click', (e) => {
   if (dictLoaded) {
     //preserve copy of game letters for reference
