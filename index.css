@@ -83,6 +83,7 @@ ul {
 }
 
 ul#found-words {
+  overflow: hidden;
   width: 76%;
   height: 100%;
   display: flex;
@@ -347,7 +348,6 @@ img#expand {
   }
 
   ul#found-words.expand {
-    width: 82%;
     height: 79vh;
     display: flex;
     flex-direction: column;
@@ -357,12 +357,15 @@ img#expand {
     background-color: #fff;
     border-radius: 5px;
     border: solid 1px;
+    position: absolute;
     z-index: 1;
   }
 
   img#expand {
-    height: 90%;
+    height: 7%;
     width: auto;
+    position: fixed;
+    right: 1.4em;
     visibility: visible;
   }
 
