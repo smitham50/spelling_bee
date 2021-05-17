@@ -315,7 +315,8 @@ img#expand {
 @media screen and (max-width: 768px) {
   html, body {
     width: 100vw;
-    height: calc(var(--vh, 1vh) * 100);
+    height: auto;
+    flex-flow: nowrap;
   }
 
   #new-game {
@@ -339,12 +340,8 @@ img#expand {
   }
 
   #list-div {
-    height: 10vh;
+    height: 6rem;
     font-size: inherit;
-  }
-
-  ul#found-words {
-    width: 82%;
   }
 
   ul#found-words.expand {
@@ -364,13 +361,13 @@ img#expand {
   img#expand {
     height: 7%;
     width: auto;
-    position: fixed;
+    position: absolute;
     right: 1.4em;
     visibility: visible;
   }
 
   #stats-div {
-    height: 10vh;
+    height: 6rem;
     margin-bottom: 3vh;
     font-size: inherit;
   }

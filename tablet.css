@@ -50,7 +50,7 @@
   img#expand {
     height: 7%;
     width: auto;
-    position: fixed;
+    position: absolute;
     right: 3.5rem;
     visibility: visible;
   }
