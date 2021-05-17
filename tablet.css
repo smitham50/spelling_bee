@@ -1,4 +1,4 @@
-@media screen and (max-width: 768px) {
+@media screen and (min-width: 768px) {
   html, body {
     width: 100vw;
     height: calc(var(--vh, 1vh) * 100);
