@@ -317,6 +317,7 @@ img#expand {
     width: 100vw;
     height: auto;
     flex-flow: nowrap;
+    flex-direction: column;
   }
 
   #new-game {
@@ -362,7 +363,7 @@ img#expand {
     height: 7%;
     width: auto;
     position: absolute;
-    right: 1.4em;
+    right: 1.8rem;
     visibility: visible;
   }
 
