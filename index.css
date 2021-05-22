@@ -60,7 +60,7 @@ html, body {
   padding: 0 2%;
   width: 31%;
   height: 92vh;
-  margin-right: 5%;
+  margin-right: 0 auto;
   flex-direction: column;
   justify-content: space-between;
 }
@@ -347,6 +347,7 @@ img#expand {
 
   ul#found-words.expand {
     height: 79vh;
+    width: 76%;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
@@ -363,7 +364,7 @@ img#expand {
     height: 7%;
     width: auto;
     position: absolute;
-    right: 1.8rem;
+    right: 1rem;
     visibility: visible;
   }
 
