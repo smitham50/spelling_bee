@@ -368,6 +368,10 @@ img#expand {
     visibility: visible;
   }
 
+  img.click {
+    transform: scale(.95);
+  }
+
   #stats-div {
     height: 3.5rem;
     margin-bottom: 3vh;

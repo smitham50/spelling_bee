@@ -359,4 +359,12 @@ function expandList() {
 //event listener for hamburger button
 listButton.addEventListener('click', () => {
   expandList();
-})
+  listButton.className = 'click';
+  clickHamburger();
+});
+
+function clickHamburger() {
+  setTimeout(() => {
+    listButton.classList.remove('click');
+  }, 150);
+}
